@@ -30,7 +30,7 @@ export function requireOptionBeforeAdd() {
         form.querySelectorAll('.tz-option-missing').forEach((el) => el.classList.remove('tz-option-missing'));
         const first = missing[0];
         if (first) {
-            const group = first.closest('.s-product-options-option-wrapper, .product-options-group, salla-product-options');
+            const group = first.closest('.s-product-options-option');
             group?.classList.add('tz-option-missing');
             if (hint) hint.textContent = hintFor(first);
         }
@@ -38,9 +38,10 @@ export function requireOptionBeforeAdd() {
 
     /** Names the thing that is missing, so the hint reads like a person wrote it. */
     const hintFor = (field) => {
-        const wrapper = field.closest('.s-product-options-option-wrapper, .product-options-group');
-        const label = wrapper?.querySelector('label, .s-product-options-option-label, h3');
-        const name = label?.textContent?.trim().replace(/\*$/, '').trim();
+        // salla-product-options renders: .s-product-options-option > label.s-product-options-option-label > b
+        const option = field.closest('.s-product-options-option');
+        const name = option?.querySelector('.s-product-options-option-label b')
+            ?.textContent?.replace('*', '').trim();
         return name
             ? salla.lang.get('pages.products.select_option_first').replace(':option', name)
             : salla.lang.get('pages.products.select_options_first');

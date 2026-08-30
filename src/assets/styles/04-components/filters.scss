@@ -1,114 +1,71 @@
 /*
 * Filters — Teraz.
 *
-* theme-raed ships this file empty, so `salla-filters` renders with the web component's
-* own defaults. For a fashion catalogue the filters ARE the navigation, so they get a
-* real treatment here: size as tappable pills, colour as swatches, everything else as
-* quiet rows that only gain weight once they are active.
+* theme-raed ships this file empty, so `salla-filters` renders with the web component's own
+* defaults. The component has NO shadow DOM, so theme CSS reaches it — but only through the
+* classes it actually emits. Those are, verified against
+* @salla.sa/twilight-components/dist/collection/components/salla-filters:
+*
+*   .filter                 one filter group
+*   .s-filters-label        the clickable row wrapping an input
+*   .s-filters-option-name  the option's text
+*   .s-filters-checkbox     checkbox input
+*   .s-filters-radio        radio input
+*   .s-filters-footer       the apply/reset area
+*
+* Anything outside that list is not ours to target.
 */
 
 salla-filters {
   @apply block;
 
-  /* section heads */
-  .s-filter-title,
-  .filter-title {
-    @apply text-sm font-semibold text-ink pb-3;
+  .filter {
+    @apply border-t border-line pt-5 mt-5;
+
+    &:first-of-type { @apply border-0 pt-0 mt-0; }
+
+    /* the group heading, whatever element the component uses for it */
+    > h1, > h2, > h3, > h4, > b, > strong {
+      @apply block text-sm font-semibold text-ink pb-3 m-0;
+    }
   }
 
-  /* one filter group per hairline-separated block */
-  .s-filter-group,
-  .filter-group {
-    @apply border-t border-line pt-5 mt-5 first:border-0 first:pt-0 first:mt-0;
-  }
-
-  /* plain option rows stay quiet until chosen */
-  label {
-    @apply flex items-center gap-2.5 text-[13.5px] text-ink-2 cursor-pointer transition-colors py-1;
+  /* a filter option stays quiet until it is doing something */
+  .s-filters-label {
+    @apply flex items-center gap-2.5 py-1.5 cursor-pointer transition-colors text-ink-2;
 
     &:hover { @apply text-ink; }
   }
 
-  input[type="checkbox"],
-  input[type="radio"] {
-    @apply w-[17px] h-[17px] border-[1.5px] border-ink-4 text-primary shrink-0;
-    &:checked { @apply border-primary; }
-    &:focus { @apply ring-0 ring-offset-0; }
+  .s-filters-option-name {
+    @apply text-[13.5px] leading-normal;
   }
-  input[type="checkbox"] { @apply rounded-tiny; }
-  input[type="radio"]    { @apply rounded-full; }
 
-  /* the count that trails each option — informative, never loud */
-  .s-filter-count,
-  .filter-count {
-    @apply rtl:mr-auto ltr:ml-auto text-xs text-ink-4;
+  .s-filters-checkbox,
+  .s-filters-radio {
+    @apply w-[17px] h-[17px] border-[1.5px] border-ink-4 shrink-0;
+    color: var(--color-primary);
+
+    &:checked { border-color: var(--color-primary); }
+    &:focus   { @apply ring-0 ring-offset-0; }
   }
-}
 
-/* Size: a grid of hit targets, not a list of checkboxes */
-.tz-filter-sizes {
-  @apply flex flex-wrap gap-2;
+  .s-filters-checkbox { @apply rounded-tiny; }
+  .s-filters-radio    { @apply rounded-full; }
 
-  label {
-    @apply min-w-[44px] h-[38px] px-3 rounded-md border border-line bg-surface
-           flex items-center justify-center text-[13px] font-semibold text-ink-2
-           cursor-pointer transition-colors;
-
-    input { @apply sr-only; }
-
-    &:hover { @apply border-ink-3 text-ink; }
-
-    &:has(input:checked) {
-      @apply bg-primary border-primary text-primary-reverse;
-    }
-
-    /* a size with nothing in stock is shown, struck through, and not selectable */
-    &:has(input:disabled) {
-      @apply bg-fill border-line-soft text-ink-4 line-through cursor-not-allowed;
-    }
+  .s-filters-footer {
+    @apply border-t border-line pt-4 mt-5 flex gap-3;
   }
 }
 
-/* Colour: the swatch is the label */
-.tz-filter-colors {
-  @apply flex flex-wrap gap-3;
+/* Chips for the filters already applied — removing one must be a single tap */
+salla-applied-filters {
+  @apply block;
 
-  label {
-    @apply flex flex-col items-center gap-1.5 cursor-pointer text-[11px] text-ink-3;
-
-    input { @apply sr-only; }
-
-    .tz-swatch {
-      @apply w-[30px] h-[30px] rounded-full border border-black/15 transition-all;
-      outline: 2px solid transparent;
-      outline-offset: 2px;
-    }
-
-    &:has(input:checked) {
-      @apply text-ink;
-      .tz-swatch { outline-color: var(--color-primary); }
-    }
-  }
-}
-
-/* Active filter chips — removing a filter must be one tap */
-.tz-filter-chips {
-  @apply flex flex-wrap gap-2;
-
-  .tz-chip {
+  button, .s-applied-filters-item {
     @apply inline-flex items-center gap-1.5 bg-fill rounded-full px-3 py-1.5
-           text-[12.5px] text-ink cursor-pointer transition-colors hover:bg-line;
+           text-[12.5px] text-ink transition-colors hover:bg-line;
 
-    i, svg { @apply text-ink-3 w-2.5 h-2.5; }
+    i, svg { @apply text-ink-3; }
   }
-}
-
-/* Mobile: filters live in a sheet, and the apply button is always reachable */
-.tz-filter-sheet {
-  @apply fixed inset-x-0 bottom-0 z-50 bg-surface rounded-t-large max-h-[85vh] flex flex-col
-         shadow-[0_-14px_40px_rgba(22,22,26,.18)];
-
-  &__head   { @apply flex items-center justify-between px-4 h-14 border-b border-line shrink-0; }
-  &__body   { @apply overflow-y-auto px-4 py-5 flex-1; }
-  &__footer { @apply p-4 border-t border-line shrink-0 flex gap-3; }
 }
