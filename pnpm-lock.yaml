@@ -36,6 +36,12 @@ importers:
       '@babel/preset-env':
         specifier: ^8.0.2
         version: 8.0.2(@babel/core@8.0.1)
+      '@fontsource/ibm-plex-sans-arabic':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/readex-pro':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@salla.sa/twilight':
         specifier: ^2.14.551
         version: 2.14.551(@jitsu/protocols@1.11.0)(@types/dlv@1.1.5)(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)(webpack@5.108.4)
@@ -953,6 +959,12 @@ packages:
   '@discoveryjs/json-ext@1.1.0':
     resolution: {integrity: sha512-Xc3VhU02wqZ1HvHRJUwL09HkZSTvidqY5Ya0NXBSYOxAp+Ln9dcJr9fySI+CkONzP3PekQo9WdzCv0PGER/mOA==}
     engines: {node: '>=14.17.0'}
+
+  '@fontsource/ibm-plex-sans-arabic@5.3.0':
+    resolution: {integrity: sha512-ZZ4g+JDgQY0NqSh4o0MNWU1sHQmtcee1g++aKAwyJvZxnT5y51JXsN1cIXnaQaMd40dcbK6QFYa+Z1LbaiNuqA==}
+
+  '@fontsource/readex-pro@5.3.0':
+    resolution: {integrity: sha512-llvAZL81cEA7kgp9AnhgMRUVsZqb2i5njgLN0uQCNa0+jI8jjscZPOVyiqnUUGvzwmCFhsHw2OBQeF4MyygCXA==}
 
   '@googlemaps/markerclusterer@2.6.2':
     resolution: {integrity: sha512-U6uVhq8iWhiIckA89sgRu8OK35mjd6/3CuoZKWakKEf0QmRRWpatlsPb3kqXkoWSmbcZkopRiI4dnW6DQSd7bQ==}
@@ -3991,6 +4003,10 @@ snapshots:
       postcss: 8.5.16
 
   '@discoveryjs/json-ext@1.1.0': {}
+
+  '@fontsource/ibm-plex-sans-arabic@5.3.0': {}
+
+  '@fontsource/readex-pro@5.3.0': {}
 
   '@googlemaps/markerclusterer@2.6.2':
     dependencies:

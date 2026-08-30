@@ -60,7 +60,11 @@ module.exports = {
     plugins: [
         new ThemeWatcher(),
         new MiniCssExtractPlugin(),
-        new CopyPlugin({patterns: [{from: asset('images'), to: public('images')}]}),
+        new CopyPlugin({patterns: [
+            {from: asset('images'), to: public('images')},
+            // Teraz ships its own font files — see 01-settings/fonts.scss for why
+            {from: asset('fonts'), to: public('fonts')},
+        ]}),
     ],
     optimization: {
         minimizer: [

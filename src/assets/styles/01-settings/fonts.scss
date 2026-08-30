@@ -1,12 +1,45 @@
 /*
-* Fonts — Teraz.
+* Fonts — Teraz, self-hosted.
 *
-* NO external font request. A `@import url(...)` to a third-party font host sits at the top
-* of app.css and is render-blocking: on any network where that host is slow or unreachable
-* the whole storefront waits on it and paints unstyled until the request times out. That is
-* exactly what happened in preview, so the theme ships self-hosted faces instead (added
-* below once bundled) and falls back to the system Arabic stack meanwhile.
+* NOT loaded from a third-party font host. A `@import url(...)` to fonts.googleapis.com sits
+* at the top of app.css and is render-blocking: on a network that cannot reach it — which is
+* the case on the networks this theme is built for — the whole storefront waits and paints
+* unstyled until the request times out. These faces ship inside the theme instead, so there
+* is no external request and nothing to time out.
 *
-* Salla still overwrites `--font-main` with the merchant's dashboard choice; `--font-display`
-* falls back to it, so headings follow that choice too.
+* Split by `unicode-range`, so an Arabic storefront downloads only the Arabic files (~62 KB
+* for both families) and never touches the Latin ones, and vice versa.
+*
+* Salla still overwrites `--font-main` with the merchant's dashboard font, and `--font-display`
+* falls back to it, so a merchant's choice reaches the headings too.
 */
+
+$tz-arabic: "U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+FB50-FDFF, U+FE70-FEFF, U+102E0-102FB, U+10E60-10E7E, U+10EFD-10EFF, U+1EE00-1EEFF";
+$tz-latin: "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD";
+
+@mixin tz-face($family, $file, $weight, $range) {
+  @font-face {
+    font-family: $family;
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url("fonts/#{$file}") format("woff2");
+    unicode-range: #{$range};
+  }
+}
+
+/* ---- Readex Pro — the display face, used for headings ---- */
+@include tz-face("Readex Pro", "readex-pro-arabic-400-normal.woff2", 400, $tz-arabic);
+@include tz-face("Readex Pro", "readex-pro-latin-400-normal.woff2", 400, $tz-latin);
+@include tz-face("Readex Pro", "readex-pro-arabic-500-normal.woff2", 500, $tz-arabic);
+@include tz-face("Readex Pro", "readex-pro-latin-500-normal.woff2", 500, $tz-latin);
+@include tz-face("Readex Pro", "readex-pro-arabic-600-normal.woff2", 600, $tz-arabic);
+@include tz-face("Readex Pro", "readex-pro-latin-600-normal.woff2", 600, $tz-latin);
+
+/* ---- IBM Plex Sans Arabic — the body face ---- */
+@include tz-face("IBM Plex Sans Arabic", "ibm-plex-sans-arabic-arabic-400-normal.woff2", 400, $tz-arabic);
+@include tz-face("IBM Plex Sans Arabic", "ibm-plex-sans-arabic-latin-400-normal.woff2", 400, $tz-latin);
+@include tz-face("IBM Plex Sans Arabic", "ibm-plex-sans-arabic-arabic-600-normal.woff2", 600, $tz-arabic);
+@include tz-face("IBM Plex Sans Arabic", "ibm-plex-sans-arabic-latin-600-normal.woff2", 600, $tz-latin);
+@include tz-face("IBM Plex Sans Arabic", "ibm-plex-sans-arabic-arabic-700-normal.woff2", 700, $tz-arabic);
+@include tz-face("IBM Plex Sans Arabic", "ibm-plex-sans-arabic-latin-700-normal.woff2", 700, $tz-latin);
