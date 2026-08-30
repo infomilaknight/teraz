@@ -1578,8 +1578,8 @@
     ],
     "support_url": null,
     "description": {
-        "ar": "ثيم أزياء عربي أولاً، مبني حول السؤالين اللي بيحسموا الشراء: هل المقاس هيظبط، وهل أقدر أرجّعه.\n\n• بطاقة منتج بنسبة ٤:٥ — القصّة المربعة بتقطع القطعة عند الركبة، ودي بتعرضها كاملة.\n• زر «أضف للسلة» مقفول لحد ما يتحدد المقاس، والتلميح بيسمّي الخيار الناقص — أكبر سبب للسلات المهجورة في متاجر الأزياء.\n• المقاسات النافدة تظهر مشطوبة وغير قابلة للاختيار، من مخزون سلة الحقيقي، بدل ما تختفي.\n• فلاتر مقاس ولون كأهداف لمس وسواتشات، مش قوائم اختيار.\n• تبويبات منتج: الوصف والمقاسات والشحن والإرجاع، بجدول قياسات يكتبه التاجر.\n• شريط ثقة ولوك بوك يترسموا من الثيم نفسه — المتجر يبان مكتمل من أول تثبيت.\n• هيرو فيديو بغلاف يرسم أولاً، ويختفي مع «تقليل الحركة».\n\nعربي أولاً بواجهة إنجليزية كاملة، خطوط مضمّنة داخل الثيم بدون أي طلب خارجي، وكل الألوان والخطوط تتغيّر من لوحة التحكم بدون كود.",
-        "en": "An Arabic-first fashion theme built around the two questions that decide a purchase: will it fit, and can I send it back.\n\n• 4:5 product cards — a square crop cuts a garment off at the knee; this shows the whole piece.\n• Add-to-cart stays locked until a size is chosen, and the hint names the missing option — the single biggest source of abandoned carts in fashion.\n• Sold-out sizes are struck through and unselectable, from real Salla inventory, instead of vanishing.\n• Size and colour filters as hit targets and swatches, not dropdowns.\n• Product tabs for description, sizing and shipping, with a merchant-written size chart.\n• A trust strip and lookbook drawn by the theme itself, so a store looks finished from the first install.\n• A video hero whose poster paints first and that is dropped under reduced-motion.\n\nArabic-first with a full English mirror, fonts bundled inside the theme with no external request, and every colour and font changeable from the dashboard without code."
+        "ar": null,
+        "en": null
     },
     "short_description": {
         "ar": "ثيم أزياء عربي أولاً: بطاقات ٤:٥، فلاتر مقاس ولون سريعة، ومنع الإضافة للسلة قبل اختيار المقاس.",
