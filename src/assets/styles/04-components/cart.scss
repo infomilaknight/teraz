@@ -1,0 +1,94 @@
+/*
+* Cart — Teraz.
+*
+* theme-raed ships no stylesheet for the cart at all; every rule lives inline in cart.twig,
+* so the page inherits whatever the utilities happen to give it. That shows: line items are
+* plain white blocks with no edge, and the summary — the one thing a shopper reads before
+* paying — carries no more weight than anything else on the page.
+*
+* Every `s-cart-*` selector below was read out of
+* @salla.sa/twilight-components/dist/collection/components (salla-cart-summary-card,
+* salla-cart-summary, salla-cart-coupons). Nothing here is guessed, and nothing restructures
+* checkout — this is a skin, deliberately, because this is the page where a mistake costs an
+* order.
+*/
+.cart-item {
+  @apply border border-line #{'!bg-surface'} transition-shadow;
+
+  &:hover { box-shadow: 0 4px 14px rgba(22, 22, 26, .06); }
+
+  img { @apply object-cover rounded-md; }
+
+  .item-price  { @apply font-bold text-ink; }
+  .item-total  { @apply font-bold text-ink; }
+  .item-weight { @apply text-xs text-ink-3; }
+}
+
+/* "you unlocked free shipping" is a reward, so it reads as trust rather than as an alert */
+.free-ribbon {
+  @apply #{'!bg-trust'} text-white text-[11px] font-bold;
+}
+
+/* ── Summary card — the last thing read before paying ─────────────────── */
+.s-cart-summary-card {
+  &-sheet {
+    @apply bg-surface border border-line rounded;
+  }
+
+  &-sheet-header { @apply border-b border-line; }
+
+  &-sheet-title {
+    font-family: var(--font-display);
+    @apply text-ink font-medium;
+  }
+
+  &-line { @apply border-line; }
+
+  &-bar {
+    @apply bg-surface border-t border-line;
+    box-shadow: 0 -6px 24px rgba(22, 22, 26, .07);
+  }
+
+  &-bar-label-main { @apply text-ink font-semibold; }
+  &-bar-label-sub  { @apply text-ink-3 text-xs; }
+  &-bar-original   { @apply text-ink-3 line-through; }
+
+  /* the amount saved is the reason to keep going — give it the trust colour */
+  &-bar-savings-badge {
+    @apply #{'!bg-trust-bg'} text-trust font-bold rounded-tiny;
+  }
+
+  &-bar-total {
+    font-family: var(--font-display);
+    @apply text-ink font-medium;
+  }
+
+  &-bar-count { @apply text-ink-3; }
+
+  &-submit {
+    @apply rounded-md font-bold;
+  }
+}
+
+/* ── Header cart summary ──────────────────────────────────────────────── */
+.s-cart-summary {
+  &-total { @apply font-bold text-ink; }
+  &-count { @apply text-primary-reverse; background: var(--color-primary); }
+  &-label { @apply text-ink-2; }
+}
+
+/* ── Coupons ──────────────────────────────────────────────────────────── */
+.s-cart-coupons {
+  &-wrapper       { @apply bg-surface border border-line rounded p-4; }
+  &-input-section input {
+    @apply h-11 rounded-md border border-line bg-surface text-sm;
+    &:focus { @apply ring-0; border-color: var(--color-primary); }
+  }
+  &-applied-item  { @apply bg-trust-bg text-trust rounded-md; }
+  &-applied-code  { @apply font-bold; }
+  &-coupon-error  { @apply text-sale text-[13px]; }
+  &-main-amount   { @apply text-ink font-bold; }
+  &-minimum,
+  &-secondary-info,
+  &-terms         { @apply text-ink-3 text-xs; }
+}
