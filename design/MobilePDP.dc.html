@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; font-family: "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif; color: #16161A; }
+    a { color: #16161A; text-decoration: none; }
+    a:hover { color: #55555C; }
+    .tz-h { font-family: "Readex Pro", "IBM Plex Sans Arabic", system-ui, sans-serif; font-weight: 500; letter-spacing: -.01em; }
+    .tz-ph { display: flex; align-items: center; justify-content: center; color: rgba(22,22,26,.22); font-size: 11px; }
+  </style>
+</helmet>
+<div dir="rtl" lang="ar" style="width: 390px; height: 844px; background: #FFFFFF; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+
+  <div style="height: 52px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-bottom: 1px solid #F0EEEB; background: #fff; z-index: 3;">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#16161A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5l-7 7 7 7"/></svg>
+    <div style="font-size: 14px; font-weight: 600;">عباية كلوش كتان</div>
+    <div style="display: flex; gap: 16px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16161A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16161A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16l-1.4 10.4a2 2 0 01-2 1.7H7.4a2 2 0 01-2-1.7z"/><path d="M9 6a3 3 0 016 0"/></svg>
+    </div>
+  </div>
+
+  <div style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+
+    <div style="position: relative; height: 380px; flex-shrink: 0; background: #EFEDEA; overflow: hidden;">
+      <sc-if value="{{ c0 }}" hint-placeholder-val="{{ true }}"><img src="p-abaya-black.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></sc-if>
+      <sc-if value="{{ c1 }}" hint-placeholder-val="{{ false }}"><img src="p-abaya-linen.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></sc-if>
+      <sc-if value="{{ c2 }}" hint-placeholder-val="{{ false }}"><img src="p-abaya-olive.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></sc-if>
+      <sc-if value="{{ c3 }}" hint-placeholder-val="{{ false }}"><img src="p-abaya-navy.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></sc-if>
+      <div style="position: absolute; top: 14px; right: 14px; background: #C0261E; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">خصم ٣٠٪</div>
+      <div style="position: absolute; bottom: 14px; right: 0; left: 0; display: flex; justify-content: center; gap: 6px;">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+          <div onClick="{{ d.go }}" style="width: {{ d.w }}; height: 5px; border-radius: 999px; background: {{ d.color }}; cursor: pointer; transition: all .3s;"></div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="padding: 18px 16px 0; display: flex; flex-direction: column; gap: 14px; overflow: hidden;">
+
+      <div style="display: flex; flex-direction: column; gap: 9px;">
+        <div class="tz-h" style="font-size: 21px; line-height: 1.4;">عباية كلوش كتان</div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#D9A441"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/></svg>
+            <span style="font-size: 12.5px; color: #55555C;">4.8 · ١٢٤ تقييم</span>
+          </div>
+          <span style="color: #E0DDD8;">|</span>
+          <span style="font-size: 12.5px; color: #0E6B4F; font-weight: 600;">متوفّرة</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <div class="tz-h" style="font-size: 25px; color: #C0261E;">٢٤٥ ر.س</div>
+          <div style="font-size: 14px; color: #8A8A93; text-decoration: line-through;">٣٥٠ ر.س</div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid #E6E4E0; border-radius: 8px; padding: 11px 13px; background: #FAF9F7; font-size: 12.5px; color: #55555C; display: flex; align-items: center; justify-content: space-between;">
+        <span>٤ دفعات × <strong style="color: #16161A;">٦١٫٢٥ ر.س</strong></span>
+        <div style="display: flex; gap: 6px;">
+          <div style="background: #fff; border: 1px solid #E6E4E0; border-radius: 4px; padding: 3px 8px; font-size: 10.5px; font-weight: 700;">tabby</div>
+          <div style="background: #fff; border: 1px solid #E6E4E0; border-radius: 4px; padding: 3px 8px; font-size: 10.5px; font-weight: 700;">tamara</div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 13.5px; font-weight: 600;">اللون: <span style="font-weight: 400; color: #55555C;">{{ colorName }}</span></div>
+        <div style="display: flex; gap: 14px;">
+          <sc-for list="{{ colors }}" as="c" hint-placeholder-count="4">
+            <div onClick="{{ c.pick }}" style="width: 44px; height: 44px; border-radius: 999px; background: {{ c.hex }}; border: 1px solid rgba(0,0,0,.14); outline: 2px solid {{ c.ring }}; outline-offset: 3px; cursor: pointer;"></div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="font-size: 13.5px; font-weight: 600;">المقاس</div>
+          <div style="font-size: 12.5px; font-weight: 600; border-bottom: 1px solid #16161A; padding-bottom: 2px;">دليل المقاسات</div>
+        </div>
+        <div style="display: flex; gap: 9px;">
+          <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="5">
+            <div onClick="{{ s.pick }}" style="flex: 1; height: 46px; border-radius: 8px; border: 1px solid {{ s.border }}; background: {{ s.bg }}; color: {{ s.fg }}; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 600; cursor: {{ s.cursor }};">
+              <span style="text-decoration: {{ s.strike }};">{{ s.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="flex-shrink: 0; border-top: 1px solid #E6E4E0; background: rgba(255,255,255,.98); padding: 12px 16px 16px; display: flex; gap: 10px; align-items: center; z-index: 4;">
+    <div style="display: flex; align-items: center; border: 1px solid #E6E4E0; border-radius: 8px; height: 50px; flex-shrink: 0;">
+      <div onClick="{{ dec }}" style="width: 40px; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 19px; color: #55555C; cursor: pointer;">−</div>
+      <div style="width: 26px; text-align: center; font-size: 14.5px; font-weight: 600;">{{ qtyLabel }}</div>
+      <div onClick="{{ inc }}" style="width: 40px; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 19px; color: #55555C; cursor: pointer;">+</div>
+    </div>
+    <div onClick="{{ add }}" style="flex: 1; height: 50px; background: {{ addBg }}; color: {{ addFg }}; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14.5px; font-weight: 700; cursor: pointer;">{{ addLabel }}</div>
+  </div>
+
+  <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeSheet }}" style="position: absolute; inset: 0; background: rgba(15,15,18,.45); z-index: 8;"></div>
+    <div style="position: absolute; right: 0; left: 0; bottom: 0; background: #fff; border-radius: 16px 16px 0 0; z-index: 9; padding: 12px 16px 20px; box-shadow: 0 -14px 40px rgba(22,22,26,.18);">
+      <div style="width: 38px; height: 4px; border-radius: 999px; background: #E0DDD8; margin: 0 auto 16px;"></div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <div style="font-size: 16px; font-weight: 700;">اختاري المقاس</div>
+        <div onClick="{{ closeSheet }}" style="cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A93" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px;">
+        <sc-for list="{{ sheetSizes }}" as="s" hint-placeholder-count="5">
+          <div onClick="{{ s.pick }}" style="height: 54px; border-radius: 8px; border: 1px solid {{ s.border }}; background: {{ s.bg }}; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; cursor: {{ s.cursor }};">
+            <span style="font-size: 14.5px; font-weight: 600; color: {{ s.fg }}; text-decoration: {{ s.strike }};">{{ s.label }}</span>
+            <span style="font-size: 12px; color: {{ s.noteColor }};">{{ s.note }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div onClick="{{ confirmSheet }}" style="height: 52px; background: {{ sheetBtnBg }}; color: {{ sheetBtnFg }}; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; cursor: pointer;">{{ sheetBtnLabel }}</div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#16161A","options":["#16161A","#7A2E2A","#1F4E43","#3B3A6B"],"section":"الهوية"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { img: 0, color: 0, size: null, draft: null, qty: 1, sheet: false, added: false };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#16161A';
+    const S = this.state;
+    const ar = n => String(n).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+    const COLORS = [
+      { name: 'أسود', hex: '#16161A' },
+      { name: 'بيج رملي', hex: '#C8B9A6' },
+      { name: 'زيتي', hex: '#6B7A6E' },
+      { name: 'كحلي', hex: '#2F3A44' },
+    ];
+    const SIZES = [
+      { label: 'S', stock: 6 }, { label: 'M', stock: 3 }, { label: 'L', stock: 1 },
+      { label: 'XL', stock: 0 }, { label: 'XXL', stock: 4 },
+    ];
+    const active = COLORS[S.color];
+    const chosen = S.size === null ? null : SIZES[S.size];
+    const pill = (idx, sel) => {
+      const s = SIZES[idx], out = s.stock === 0, on = sel === idx;
+      return {
+        label: s.label,
+        pick: () => { if (!out) this.setState({ size: idx, draft: idx, added: false }); },
+        border: out ? '#EFEDEA' : (on ? accent : '#E6E4E0'),
+        bg: out ? '#F7F6F4' : (on ? accent : '#fff'),
+        fg: out ? '#C4C0BA' : (on ? '#fff' : '#16161A'),
+        cursor: out ? 'not-allowed' : 'pointer',
+        strike: out ? 'line-through' : 'none',
+        note: out ? 'نفدت' : (s.stock <= 2 ? 'آخر ' + ar(s.stock) + ' قطع' : 'متوفّر'),
+        noteColor: out ? '#C4C0BA' : (s.stock <= 2 ? '#8A5A0B' : (on ? 'rgba(255,255,255,.75)' : '#8A8A93')),
+      };
+    };
+    return {
+      accent,
+      c0: S.color === 0, c1: S.color === 1, c2: S.color === 2, c3: S.color === 3,
+      colorName: active.name,
+      dots: [0,1,2,3,4].map(i => ({
+        go: () => this.setState({ img: i }),
+        w: i === S.img ? '20px' : '5px',
+        color: i === S.img ? '#FFFFFF' : 'rgba(255,255,255,.5)',
+      })),
+      colors: COLORS.map((c, i) => ({
+        hex: c.hex,
+        ring: i === S.color ? accent : 'transparent',
+        pick: () => this.setState({ color: i, size: null, draft: null, added: false }),
+      })),
+      sizes: SIZES.map((_, i) => pill(i, S.size)),
+      sheetSizes: SIZES.map((_, i) => {
+        const p = pill(i, S.draft);
+        return { ...p, pick: () => { if (SIZES[i].stock > 0) this.setState({ draft: i }); } };
+      }),
+      qtyLabel: ar(S.qty),
+      inc: () => this.setState({ qty: Math.min(S.qty + 1, 9) }),
+      dec: () => this.setState({ qty: Math.max(S.qty - 1, 1) }),
+      add: () => {
+        if (!chosen) { this.setState({ sheet: true, draft: S.size }); return; }
+        this.setState({ added: true });
+      },
+      addLabel: !chosen ? 'اختاري المقاس' : (S.added ? 'تمت الإضافة ✓' : 'أضيفي للسلة'),
+      addBg: S.added ? '#0E6B4F' : accent,
+      addFg: '#FFFFFF',
+      sheetOpen: S.sheet,
+      closeSheet: () => this.setState({ sheet: false }),
+      confirmSheet: () => { if (S.draft !== null) this.setState({ size: S.draft, sheet: false }); },
+      sheetBtnLabel: S.draft === null ? 'اختاري مقاساً' : 'تأكيد المقاس ' + SIZES[S.draft].label,
+      sheetBtnBg: S.draft === null ? '#EFEDEA' : accent,
+      sheetBtnFg: S.draft === null ? '#B0ADA8' : '#FFFFFF',
+    };
+  }
+}
+</script>
+</body>
+</html>

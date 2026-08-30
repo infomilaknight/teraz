@@ -72,12 +72,12 @@
 												<img src="{{ item.product_image }}"
 													alt="{{ item.product_name }}"
                                                     loading="eager"
-													class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+													class="flex-none w-24 h-20 border border-line bg-fill rounded-md object-center object-cover">
 											{% else %}
 												<img src="{{ item.product_image }}"
 													alt="{{ item.product_name }}"
                                                     loading="lazy"
-													class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+													class="flex-none w-24 h-20 border border-line bg-fill rounded-md object-center object-cover">
 											{% endif %}
 
                                             <!-- free product ribbon -->
@@ -92,16 +92,16 @@
                                                 <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
                                             </h1>
 
-                                            <span class="text-sm text-gray-500 line-through item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
-                                            <span class="inline-flex gap-1 leading-4 text-sm text-gray-500 line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
-                                            <span data-testid="store-cart-item-price" class="inline-flex gap-1 leading-4 item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                            <span class="text-sm text-ink-3 line-through item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
+                                            <span class="inline-flex gap-1 leading-4 text-sm text-ink-3 line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                            <span data-testid="store-cart-item-price" class="inline-flex gap-1 leading-4 item-price {{ item.has_discount ?  'text-sale' : 'text-sm text-ink-3' }}" id="has_discount">{{ item.price|money }}</span>
                                             
-                                            <p class="text-sm text-gray-500 item-weight-row {{ item.weight_label ? '' : 'hidden' }}"> {{ trans('pages.products.weight') }}
+                                            <p class="text-sm text-ink-3 item-weight-row {{ item.weight_label ? '' : 'hidden' }}"> {{ trans('pages.products.weight') }}
                                              <span class="item-weight">{{ item.weight_label }}</span>
                                             </p>
                                             <span class="old-offers flex items-center gap-1 mx-1.5  {{ item.detailed_offers ? 'hidden' : '' }}">
-                                                <i class="sicon-discount-calculator text-gray-500 offer-icon {{ item.offer?'':'hidden' }}"></i>
-                                                <span class="text-sm text-gray-500 offer-name {{ item.offer ?  '' : 'hidden' }}">{{ item.offer.names }}</span>
+                                                <i class="sicon-discount-calculator text-ink-3 offer-icon {{ item.offer?'':'hidden' }}"></i>
+                                                <span class="text-sm text-ink-3 offer-name {{ item.offer ?  '' : 'hidden' }}">{{ item.offer.names }}</span>
                                             </span>
                                             {# Cart Item Offers #}
                                             <salla-cart-item-offers
@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="border-t border-b border-gray-200 py-3 md:p-0 md:border-none mt-5 md:mt-0 flex gap-8 justify-between items-center md:items-start">
+                                    <div class="border-t border-b border-line py-3 md:p-0 md:border-none mt-5 md:mt-0 flex gap-8 justify-between items-center md:items-start">
                                         {% if item.type == 'donating' %}
                                             <span></span>
                                         {% elseif item.is_hidden_quantity %}
@@ -181,7 +181,7 @@
                             {% set is_free=cart.free_shipping_bar.has_free_shipping %}
                             <div class="flex-1">
                                 <h4 class="shipping-item font-bold text-sm mb-1.5">{{ trans('pages.cart.free_shipping') }}</h4>
-                                <p class="shipping-item text-sm font- text-gray-500">
+                                <p class="shipping-item text-sm font- text-ink-3">
                                         <span id="free-shipping-msg">{{ (is_free
                                             ?trans('pages.cart.has_free_shipping')
                                             :trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money}))
@@ -190,7 +190,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="mt-8 bg-border-color bg-gray-100 rounded-full {{ is_free ? ' hidden' : '' }}" id="free-shipping-bar">
+                        <div class="mt-8 bg-border-color bg-fill rounded-full {{ is_free ? ' hidden' : '' }}" id="free-shipping-bar">
                             <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end"
                                  style="width:{{ cart.free_shipping_bar.percent }}%">
                                 <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>

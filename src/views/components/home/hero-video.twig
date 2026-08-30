@@ -1,0 +1,44 @@
+{#
+| Variable      | Type    | Description                                                        |
+|---------------|---------|--------------------------------------------------------------------|
+| video_url     | string  | MP4 the merchant uploads (silent, looping, 1440x620-ish)            |
+| poster        | ?object | Still shown before the video decodes, and on data-saver connections |
+| eyebrow       | ?string | Small label above the headline                                      |
+| title         | ?string | Headline                                                            |
+| description   | ?string | Supporting line                                                     |
+| cta_text      | ?string | Primary button label                                                |
+| url           | ?string | Primary button link                                                 |
+| overlay       | Bool    | Darkening scrim behind the copy                                     |
+| position      | Int     | Sorting number start from zero                                      |
+
+The poster carries the first paint, so the section never renders empty while the video
+loads, and a visitor on `prefers-reduced-motion` or a saver connection simply keeps it.
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-hero-video"
+         class="s-block s-block--hero-video tz-hero">
+    <div class="tz-hero__media">
+        {% if poster.url %}
+            <img class="tz-hero__poster" src="{{ poster.url }}" alt="{{ title|default('') }}"
+                 fetchpriority="high" width="1440" height="620">
+        {% endif %}
+
+        {% if video_url %}
+            <video class="tz-hero__video" playsinline muted loop autoplay preload="metadata"
+                   {% if poster.url %}poster="{{ poster.url }}"{% endif %}
+                   aria-hidden="true" tabindex="-1">
+                <source src="{{ video_url }}" type="video/mp4">
+            </video>
+        {% endif %}
+
+        {% if overlay %}<div class="tz-hero__scrim"></div>{% endif %}
+    </div>
+
+    <div class="container tz-hero__body">
+        {% if eyebrow %}<p class="tz-hero__eyebrow">{{ eyebrow }}</p>{% endif %}
+        {% if title %}<h2 class="tz-hero__title">{{ title }}</h2>{% endif %}
+        {% if description %}<p class="tz-hero__desc">{{ description }}</p>{% endif %}
+        {% if cta_text and url %}
+            <a href="{{ url }}" class="btn btn--outline tz-hero__cta">{{ cta_text }}</a>
+        {% endif %}
+    </div>
+</section>

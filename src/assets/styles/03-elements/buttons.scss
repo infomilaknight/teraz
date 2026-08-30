@@ -19,7 +19,7 @@ salla-button {
 }
 
 .btn {
-  @apply transition duration-300 flex-1 inline-flex justify-center items-center px-6 pb-2.5 pt-2 text-sm font-bold rounded-md hover:opacity-80 whitespace-nowrap;
+  @apply transition-colors duration-200 flex-1 inline-flex justify-center items-center px-6 py-3 text-sm font-bold rounded-md whitespace-nowrap leading-none;
 
   .loader {
     width: 0;
@@ -73,30 +73,30 @@ salla-button {
     @apply m-0 rtl:mr-0.5 ltr:ml-0.5;
 
     &:hover{
-      @apply text-gray-600;
+      @apply text-ink;
     }
 
     &.is-added {
-      @apply text-red-500;
+      @apply text-sale;
     }
   }
 
   &--rounded-gray {
-    @apply inline-flex grow-0 justify-center w-full rounded-full px-3.5 py-2 items-center transition-colors bg-gray-200/50 hover:bg-gray-200/70 text-sm font-medium whitespace-nowrap;
+    @apply inline-flex grow-0 justify-center w-full rounded-full px-3.5 py-2 items-center transition-colors bg-fill hover:bg-line text-sm font-medium whitespace-nowrap;
   }
 
   &--circle-gray {
-    @apply inline-flex justify-center items-center rounded-full px-3 py-3 h-9 w-9 transition-colors bg-gray-200/30 hover:bg-gray-200/50 text-sm font-medium;
+    @apply inline-flex justify-center items-center rounded-full px-3 py-3 h-9 w-9 transition-colors bg-fill hover:bg-line text-sm font-medium;
   }
 
   &--icon {
-    @apply flex items-center justify-center transition bg-white text-gray-500 border-gray-200  hover:border-gray-200 hover:text-gray-600 mx-1 border rounded-full w-10 h-10 font-medium flex-shrink-0;
+    @apply flex items-center justify-center transition bg-surface text-ink-2 border-line hover:border-ink-3 hover:text-ink mx-1 border rounded-full w-10 h-10 font-medium flex-shrink-0;
 
     i {
       @apply pointer-events-none;
 
       &.sicon-heart {
-        @apply text-red-400;
+        @apply text-sale;
       }
     }
   }
@@ -114,12 +114,12 @@ salla-button {
   }
 
   &--collapse {
-    @apply w-full bg-gray-100 py-2.5 rtl:xs:pr-7 ltr:xs:pl-7 rtl:xs:pl-5 ltr:xs:pr-5 rounded-md flex items-center text-gray-700 justify-center text-sm;
+    @apply w-full bg-fill py-2.5 rtl:xs:pr-7 ltr:xs:pl-7 rtl:xs:pl-5 ltr:xs:pr-5 rounded-md flex items-center text-gray-700 justify-center text-sm;
   }
 
   /* Disabled state */
   &.btn:disabled {
-    @apply text-gray-300 bg-transparent hover:bg-transparent shadow-sm border border-gray-200 cursor-default;
+    @apply text-ink-4 bg-fill hover:bg-fill border border-line cursor-not-allowed shadow-none;
   }
 
   &:disabled {
@@ -130,11 +130,16 @@ salla-button {
 
   /* Button Variants */
   &--danger {
-    @apply bg-red-400 text-white hover:opacity-80;
+    @apply bg-sale text-white hover:brightness-95;
   }
 
   &--primary {
     @apply text-primary-reverse border border-primary bg-primary;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-d);
+      border-color: var(--color-primary-d);
+    }
   }
 
   &--outline-primary {
@@ -142,7 +147,7 @@ salla-button {
   }
 
   &--outline {
-    @apply text-gray-400 bg-white hover:bg-primary hover:text-white hover:border-primary shadow-sm border border-gray-200;
+    @apply text-ink bg-surface hover:bg-fill hover:text-ink hover:border-line border border-line;
 
     &.light {
       @apply bg-transparent text-white border-white;

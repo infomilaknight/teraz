@@ -10,12 +10,12 @@
 
 .s-product-card {
   &-entry {
-    @apply h-full transition-shadow duration-300 bg-white  rounded justify-between flex relative;
+    @apply h-full transition-shadow duration-300 bg-surface border border-line rounded justify-between flex relative overflow-hidden;
   }
 
   &-shadow {
     &:hover {
-      box-shadow: 5px 10px 30px #2b2d340d;
+      box-shadow: 0 4px 14px rgba(22, 22, 26, .06);
     }
   }
 
@@ -32,7 +32,8 @@
   &-vertical {
     @apply flex-col;
     .s-product-card-image {
-      @apply flex-1 rounded-t;
+      @apply flex-1 rounded-none;
+      aspect-ratio: 4 / 5;
     }
     .s-product-card-wishlist-btn {
       @apply absolute top-2 md:right-2 md:rtl:left-2 md:rtl:right-[unset] right-2 rtl:left-2 rtl:right-[unset] opacity-75 hover:opacity-100;
@@ -62,7 +63,7 @@
 
   &-wishlist-btn {
     button:hover svg {
-      @apply fill-gray-600;
+      @apply fill-ink;
     }
   }
 
@@ -73,21 +74,21 @@
   }
 
   &-quantity {
-    @apply absolute bottom-1 z-1 font-bold px-2.5 py-1.5 md:py-2 text-xs bg-red-400 text-white rounded left-1/2 transform -translate-x-1/2 max-w-[calc(100%-60px)];
+    @apply absolute bottom-1 z-1 font-bold px-2.5 py-1.5 md:py-2 text-xs bg-warn-bg text-warn rounded-tiny left-1/2 transform -translate-x-1/2 max-w-[calc(100%-60px)];
   }
 
   &-promotion-title {
-    @apply absolute top-4 left-0 rtl:right-0 rtl:left-[unset] z-1 font-bold px-2.5 py-1.5 md:py-2 text-xs bg-red-400 text-white rounded-r rtl:rounded-l rtl:rounded-r-none max-w-[calc(100%-60px)];
+    @apply absolute top-3 right-3 rtl:left-[unset] z-1 font-bold px-2.5 py-1 text-[11px] bg-sale text-white rounded-tiny max-w-[calc(100%-60px)];
   }
 
   &-out-badge {
-    @apply absolute bottom-2 z-1 font-bold px-2.5 py-1.5 md:py-2 text-xs bg-gray-100 text-[#999999] rounded-md left-1/2 transform -translate-x-1/2 max-w-[calc(100%-60px)];
+    @apply absolute bottom-2 z-1 font-bold px-2.5 py-1.5 md:py-2 text-xs bg-fill text-ink-4 rounded-tiny left-1/2 transform -translate-x-1/2 max-w-[calc(100%-60px)];
   }
 
   &-image {
-    @apply bg-gray-100 relative overflow-hidden hover:opacity-90 w-full h-full shrink-0 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:inline-block before:text-gray-200 before:text-3xl;
+    @apply bg-fill relative overflow-hidden w-full h-full shrink-0 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:inline-block before:text-gray-200 before:text-3xl;
     img {
-      @apply transition-opacity duration-500 h-full w-full;
+      @apply transition-all duration-500 h-full w-full object-cover;
     }
     img.lazy {
       @apply opacity-0;
@@ -102,14 +103,14 @@
   }
 
   &-content-title {
-    @apply mb-2.5 leading-6 max-w-full;
+    @apply mb-2 leading-6 max-w-full;
     a {
-      @apply block text-sm font-bold text-gray-800 hover:text-primary;
+      @apply block text-sm font-semibold text-ink hover:text-ink-2 transition-colors;
     }
   }
 
   &-content-subtitle {
-    @apply text-sm text-gray-600 leading-6 mb-2.5;
+    @apply text-[13px] text-ink-3 leading-6 mb-2;
   }
 
   &-donation-input {
@@ -127,9 +128,9 @@
   }
 
   &-rating {
-    @apply flex items-center text-sm text-gray-400 space-x-1 rtl:space-x-reverse;
+    @apply flex items-center text-xs text-ink-3 space-x-1 rtl:space-x-reverse;
     span svg {
-      @apply fill-amber-400 w-4 h-4 mb-[3px];
+      @apply fill-star w-3.5 h-3.5 mb-[3px];
     }
   }
 
@@ -138,24 +139,24 @@
   }
 
   &-sale-price {
-    @apply space-x-1 rtl:space-x-reverse;
+    @apply space-x-1.5 rtl:space-x-reverse;
     h4 {
-      @apply text-red-400 font-bold text-sm inline-block;
+      @apply text-sale font-bold text-[15px] inline-block;
     }
     span {
-      @apply text-sm text-gray-400 line-through;
+      @apply text-[13px] text-ink-3 line-through;
     }
   }
 
   &-starting-price {
     @apply w-full flex justify-between items-center;
     h4 {
-      @apply text-red-400 font-bold text-sm inline-block;
+      @apply text-ink font-bold text-[15px] inline-block;
     }
   }
 
   &-price {
-    @apply font-bold text-sm;
+    @apply font-bold text-[15px] text-ink;
   }
 
   &-content-pie {
@@ -174,7 +175,7 @@
 
   &-wishlist-added {
     svg {
-      @apply fill-red-500;
+      @apply fill-sale;
     }
   }
 
@@ -278,4 +279,14 @@
 
 .s-product-card-special .s-product-card-content-main, special .s-product-card-content-sub {
   @apply pr-24 rtl:pl-24 rtl:pr-0;
+}
+
+/* Teraz: a restrained hover on the image well, and a wishlist chip that sits on a real surface */
+.s-product-card-vertical {
+  &:hover .s-product-card-image img.loaded {
+    @apply scale-[1.03];
+  }
+  .s-product-card-wishlist-btn button {
+    @apply #{'!bg-surface'} border border-line shadow-light;
+  }
 }

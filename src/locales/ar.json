@@ -12,7 +12,9 @@
       "cart_options": "خيارات السلة"
     },
     "products": {
-      "barcode": "الباركود"
+      "barcode": "الباركود",
+      "select_option_first": "اختاري :option أولاً",
+      "select_options_first": "اختاري الخيارات أولاً"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",
@@ -21,6 +23,9 @@
       "days_since_added": "أيام من إضافته",
       "option_name": "الخيار",
       "option_content": "المحتوى"
+    },
+    "categories": {
+      "filter": "تصفية"
     }
   },
   "common": {

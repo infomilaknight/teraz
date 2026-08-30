@@ -1,0 +1,71 @@
+/*
+* Filters — Teraz.
+*
+* theme-raed ships this file empty, so `salla-filters` renders with the web component's own
+* defaults. The component has NO shadow DOM, so theme CSS reaches it — but only through the
+* classes it actually emits. Those are, verified against
+* @salla.sa/twilight-components/dist/collection/components/salla-filters:
+*
+*   .filter                 one filter group
+*   .s-filters-label        the clickable row wrapping an input
+*   .s-filters-option-name  the option's text
+*   .s-filters-checkbox     checkbox input
+*   .s-filters-radio        radio input
+*   .s-filters-footer       the apply/reset area
+*
+* Anything outside that list is not ours to target.
+*/
+
+salla-filters {
+  @apply block;
+
+  .filter {
+    @apply border-t border-line pt-5 mt-5;
+
+    &:first-of-type { @apply border-0 pt-0 mt-0; }
+
+    /* the group heading, whatever element the component uses for it */
+    > h1, > h2, > h3, > h4, > b, > strong {
+      @apply block text-sm font-semibold text-ink pb-3 m-0;
+    }
+  }
+
+  /* a filter option stays quiet until it is doing something */
+  .s-filters-label {
+    @apply flex items-center gap-2.5 py-1.5 cursor-pointer transition-colors text-ink-2;
+
+    &:hover { @apply text-ink; }
+  }
+
+  .s-filters-option-name {
+    @apply text-[13.5px] leading-normal;
+  }
+
+  .s-filters-checkbox,
+  .s-filters-radio {
+    @apply w-[17px] h-[17px] border-[1.5px] border-ink-4 shrink-0;
+    color: var(--color-primary);
+
+    &:checked { border-color: var(--color-primary); }
+    &:focus   { @apply ring-0 ring-offset-0; }
+  }
+
+  .s-filters-checkbox { @apply rounded-tiny; }
+  .s-filters-radio    { @apply rounded-full; }
+
+  .s-filters-footer {
+    @apply border-t border-line pt-4 mt-5 flex gap-3;
+  }
+}
+
+/* Chips for the filters already applied — removing one must be a single tap */
+salla-applied-filters {
+  @apply block;
+
+  button, .s-applied-filters-item {
+    @apply inline-flex items-center gap-1.5 bg-fill rounded-full px-3 py-1.5
+           text-[12.5px] text-ink transition-colors hover:bg-line;
+
+    i, svg { @apply text-ink-3; }
+  }
+}

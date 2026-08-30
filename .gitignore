@@ -28,3 +28,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 .DS_Store
 
 
+
+# heavy source media kept locally only (the shipped 1440x620 hero.mp4 IS tracked)
+demo/videos/hero-source-1080p.mp4

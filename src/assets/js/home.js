@@ -1,10 +1,12 @@
 import "lite-youtube-embed";
+import { initHeroVideo } from './partials/hero-video';
 import BasePage from "./base-page";
 import Lightbox from "fslightbox";
 window.fslightbox = Lightbox;
 
 class Home extends BasePage {
     onReady() {
+        initHeroVideo();
         this.initFeaturedTabs();
     }
 
