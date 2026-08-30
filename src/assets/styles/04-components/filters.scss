@@ -69,3 +69,41 @@ salla-applied-filters {
     i, svg { @apply text-ink-3; }
   }
 }
+
+/*
+* Mobile — the filter drawer.
+*
+* theme-raed already opens the filters as an mmenu-light offcanvas (see js/products.js
+* `initiateMobileMenu`); there is no reason to build a second sheet beside it. This dresses
+* the drawer that already exists so it matches the rest of the theme: a real surface, a
+* header that says what it is, and a close control big enough to hit.
+*/
+@media (max-width: 1024px) {
+  .mm-ocd__content {
+    @apply bg-surface;
+    box-shadow: 0 0 60px rgba(22, 22, 26, .22);
+
+    salla-filters {
+      @apply p-4 pb-24;
+    }
+  }
+
+  .mm-ocd__backdrop {
+    background: rgba(15, 15, 18, .45);
+  }
+
+  /* the drawer needs to announce itself — a bare list of checkboxes does not */
+  .filters-opened .mm-ocd__content salla-filters::before {
+    content: attr(data-title);
+    @apply block text-base font-semibold text-ink pb-4 mb-4 border-b border-line;
+  }
+
+  .close-filters.btn--close-sm {
+    @apply bg-surface text-ink border border-line rounded-full
+           w-11 h-11 top-3 shadow-light;
+    inset-inline-end: 14px;
+    inset-inline-start: auto;
+
+    &::before { @apply text-lg; }
+  }
+}
