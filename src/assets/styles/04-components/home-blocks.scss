@@ -427,3 +427,62 @@
     @apply mt-0 #{!important}
   }
 }
+/*
+* Teraz — video hero (component: home.hero-video).
+*
+* The poster paints first and the video fades in over it once it can actually play, so the
+* section is never a blank rectangle on a slow connection. Anyone who has asked their OS to
+* reduce motion keeps the still.
+*/
+.tz-hero {
+  @apply relative overflow-hidden;
+  height: clamp(420px, 43vw, 620px);
+
+  &__media { @apply absolute inset-0; }
+
+  &__poster,
+  &__video {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
+
+  &__video {
+    @apply opacity-0 transition-opacity duration-700;
+    &.is-playing { @apply opacity-100; }
+  }
+
+  &__scrim {
+    @apply absolute inset-0;
+    background: linear-gradient(to left, rgba(15, 15, 18, .66) 6%, rgba(15, 15, 18, .18) 58%, transparent);
+
+    [dir='ltr'] & {
+      background: linear-gradient(to right, rgba(15, 15, 18, .66) 6%, rgba(15, 15, 18, .18) 58%, transparent);
+    }
+  }
+
+  &__body {
+    @apply relative h-full flex flex-col justify-center items-start gap-4;
+  }
+
+  &__eyebrow {
+    @apply text-[11px] font-semibold tracking-[.16em] text-white/70 m-0;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    @apply text-white m-0 max-w-[560px] leading-[1.15] font-medium;
+    font-size: clamp(30px, 4vw, 58px);
+  }
+
+  &__desc {
+    @apply text-white/85 m-0 max-w-[460px] leading-relaxed;
+    font-size: clamp(14px, 1.2vw, 16px);
+  }
+
+  &__cta {
+    @apply flex-none mt-2 bg-white text-ink border-white hover:bg-white/90 hover:text-ink hover:border-white;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tz-hero__video { @apply hidden; }
+}

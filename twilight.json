@@ -273,6 +273,105 @@
     ],
     "components": [
         {
+            "key": "b7c4e1a2-9f30-4d18-8c55-3ad2f6e0b914",
+            "title": {
+                "en": "Video hero",
+                "ar": "هيرو فيديو"
+            },
+            "icon": "sicon-video",
+            "path": "home.hero-video",
+            "is_default": false,
+            "fields": [
+                {
+                    "type": "string",
+                    "id": "video_url",
+                    "format": "text",
+                    "required": true,
+                    "icon": "sicon-video",
+                    "label": "رابط الفيديو (MP4)",
+                    "description": "ارفع الفيديو في «الملفات» ثم الصق رابطه هنا. يُنصح بمقطع صامت ٦–١٠ ثوانٍ بمقاس ١٤٤٠×٦٢٠ وحجم أقل من ٢ ميجابايت — الفيديو يعمل بلا صوت ويتكرّر تلقائياً.",
+                    "placeholder": "https://cdn.salla.sa/.../hero.mp4"
+                },
+                {
+                    "type": "string",
+                    "id": "poster",
+                    "format": "image",
+                    "required": true,
+                    "icon": "sicon-image",
+                    "label": "صورة الغلاف",
+                    "description": "تظهر قبل تحميل الفيديو، وتبقى ظاهرة لمن فعّل «تقليل الحركة» في جهازه. المقاس المناسب ١٤٤٠×٦٢٠ بكسل."
+                },
+                {
+                    "type": "string",
+                    "id": "eyebrow",
+                    "format": "text",
+                    "required": false,
+                    "multilanguage": true,
+                    "icon": "sicon-format-text-alt",
+                    "label": "سطر علوي",
+                    "description": "نص صغير فوق العنوان، مثل اسم المجموعة.",
+                    "placeholder": "مجموعة صيف ٢٠٢٦",
+                    "minLength": 0,
+                    "maxLength": 60
+                },
+                {
+                    "type": "string",
+                    "id": "title",
+                    "format": "text",
+                    "required": false,
+                    "multilanguage": true,
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الرئيسي",
+                    "placeholder": "خفيف، فضفاض، مصنوع للحرّ",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "type": "string",
+                    "id": "description",
+                    "format": "textarea",
+                    "required": false,
+                    "multilanguage": true,
+                    "icon": "sicon-typography",
+                    "label": "نص إضافي",
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "id": "cta_text",
+                    "format": "text",
+                    "required": false,
+                    "multilanguage": true,
+                    "icon": "sicon-cursor-click",
+                    "label": "نص الزر",
+                    "placeholder": "تسوّقي الآن",
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "id": "url",
+                    "format": "text",
+                    "required": false,
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "description": "رابط القسم أو المنتج الذي يفتحه الزر."
+                },
+                {
+                    "type": "boolean",
+                    "id": "overlay",
+                    "format": "switch",
+                    "required": false,
+                    "icon": "sicon-toggle-off",
+                    "label": "طبقة تعتيم خلف النص",
+                    "description": "تُبقي النص مقروءاً فوق الفيديو. ألغِها فقط لو الفيديو داكن أصلاً.",
+                    "value": true,
+                    "selected": true
+                }
+            ]
+        },
+        {
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
             "title": {
                 "en": "Enhances Animated Images",

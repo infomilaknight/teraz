@@ -411,6 +411,9 @@
                             </div>
                         {% endif %}
                         {# Add to cart #}
+                        {# Teraz: names the option that is still missing, shown only while the form is incomplete #}
+                        <p class="tz-option-hint" aria-live="polite">{{ trans('pages.products.select_options_first') }}</p>
+
                         <salla-add-product-button
                                 data-testid="store-product-add-to-cart"
                                 {{product.can_quick_buy ? 'quick-buy' : ''}}

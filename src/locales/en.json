@@ -12,7 +12,9 @@
       "cart_options": "Cart Options"
     },
     "products": {
-      "barcode": "الباركود"
+      "barcode": "الباركود",
+      "select_option_first": "Choose :option first",
+      "select_options_first": "Choose the options first"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "You can edit or delete your review within",

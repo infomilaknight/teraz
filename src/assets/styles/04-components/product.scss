@@ -435,3 +435,40 @@ salla-quantity-input[max='1']{
     @apply cursor-not-allowed
   }
 }
+/*
+* Teraz — the required-option gate.
+*
+* Mirrors native form validity into the UI so a shopper never presses "add to cart" only to
+* be bounced. Driven by `.tz-needs-option` on `.product-form` (see js/partials/require-option-before-add.js).
+*/
+.tz-option-hint {
+  @apply hidden items-center gap-2 text-[13px] font-semibold text-sale mt-3;
+
+  &::before {
+    content: '';
+    @apply w-1.5 h-1.5 rounded-full bg-sale shrink-0;
+  }
+}
+
+.tz-option-missing {
+  @apply relative rounded-md;
+  box-shadow: 0 0 0 1.5px var(--tz-sale);
+}
+
+.product-form.tz-needs-option {
+  .tz-option-hint { @apply flex; }
+
+  salla-add-product-button {
+    @apply pointer-events-none;
+
+    button, .s-button-element {
+      @apply #{'!bg-fill !border-line !text-ink-4'} cursor-not-allowed;
+    }
+  }
+}
+
+/* Sticky add bar — a real surface, not a floating rectangle */
+.sticky-product-bar {
+  @apply border-t border-line;
+  box-shadow: 0 -6px 24px rgba(22, 22, 26, .07);
+}

@@ -1,3 +1,12 @@
+/*
+* Global settings — the Teraz design tokens.
+*
+* Everything visual in the theme resolves back to this file. `--color-primary` and
+* `--font-main` are OVERWRITTEN at runtime by Salla from the merchant's dashboard
+* (the `color` and `fonts` features), so the values here are defaults, not constants:
+* changing the brand colour in the dashboard must recolour the whole storefront
+* without touching any code.
+*/
 
 // Colors
 $main-color: var(--color-primary);
@@ -5,24 +14,46 @@ $infinte-color: var(--infinte-color);
 $main-text-color: var(--main-text-color);
 
 :root {
-  --infinte-color: #c9c9c9;
-  --main-text-color: #231f1e;
-  --main-text-color-dark: #2b2d34;
+  /* ---- brand (merchant-controlled) ---- */
+  --color-primary: #16161a;          /* ink — the shipped default */
+  --color-primary-d: #000000;
+  --color-primary-l: #3a3a42;
+  --color-primary-reverse: #ffffff;
 
-  /* current */
-  --color-primary: #5cd5c4;
-  --color-primary: #414042;
-  --color-primary-d: #272628;
-  --color-primary-l: #676668;
-  --color-primary-reverse: #ff6767;
-  --color-text: #7c8082;
-  --bg-gray: #c6c7ce1a;
-  --color-grey: #f5f7f9;
-  --color-light-grey: #eeeeee;
-  /* font-size */
+  /* ---- surfaces ---- */
+  --tz-paper: #faf9f7;               /* warm paper canvas, never flat white */
+  --tz-surface: #ffffff;
+  --tz-line: #e6e4e0;                /* hairline borders carry structure, not shadows */
+  --tz-line-soft: #f0eeeb;
+  --tz-fill: #f3f1ee;                /* quiet button / chip fill */
+
+  /* ---- text ---- */
+  --tz-ink: #16161a;
+  --tz-ink-2: #55555c;
+  --tz-ink-3: #8a8a93;
+  --tz-ink-4: #b0ada8;
+
+  /* ---- semantic ---- */
+  --tz-sale: #c0261e;
+  --tz-trust: #0e6b4f;
+  --tz-trust-bg: #e9f3ef;
+  --tz-warn: #8a5a0b;
+  --tz-warn-bg: #fff4e5;
+  --tz-star: #d9a441;
+
+  /* ---- type ---- */
+  --font-main: "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Readex Pro", var(--font-main);
   --font-sm: 0.8685714286rem;
-  /* font-family: ; */
-  --font-main: "DINNextLTArabic";
+
+  /* ---- legacy aliases theme-raed still reads ---- */
+  --infinte-color: #c9c9c9;
+  --main-text-color: #16161a;
+  --main-text-color-dark: #16161a;
+  --color-text: var(--tz-ink-2);
+  --bg-gray: #f3f1ee80;
+  --color-grey: var(--tz-paper);
+  --color-light-grey: var(--tz-line);
 
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
