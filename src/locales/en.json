@@ -36,7 +36,10 @@
       "feature_pay_sub": "Tabby and Tamara",
       "feature_support": "Support that answers",
       "feature_support_sub": "WhatsApp, all day",
-      "lookbook": "Shop the look"
+      "lookbook": "Shop the look",
+      "tab_description": "Description",
+      "tab_sizing": "Sizing & fit",
+      "tab_shipping": "Shipping & returns"
     }
   },
   "common": {

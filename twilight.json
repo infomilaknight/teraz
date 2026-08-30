@@ -577,6 +577,44 @@
             "icon": "sicon-link",
             "format": "text",
             "required": false
+        },
+        {
+            "type": "static",
+            "id": "tz-line-tabs",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "tz-head-tabs",
+            "variant": "h6",
+            "value": "<div class='rounded-lg' style=\"background-color: #16161A; display:flex; justify-content:center; align-items:center; padding:15px; margin-bottom:20px !important;\"><h6 style='color:#fff;font-size:15px;font-weight:bold;'>تبويبات صفحة المنتج</h6></div>"
+        },
+        {
+            "type": "string",
+            "id": "tz_tab_sizing",
+            "label": "تبويب «المقاسات والقياسات»",
+            "description": "أكبر سبب لإرجاع قطع الأزياء هو المقاس. اكتب جدول القياسات ونصيحة الاختيار بين مقاسين. يقبل HTML بسيط ووسم <table>. التبويب لا يظهر إن تُرك فارغاً.",
+            "icon": "sicon-typography",
+            "format": "textarea",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "٦٥٪ كتان · ٣٥٪ ڤسكوز. الطول ١٤٠ سم لمقاس M. لو بين مقاسين، خذي الأكبر.",
+            "minLength": 0,
+            "maxLength": 4000
+        },
+        {
+            "type": "string",
+            "id": "tz_tab_shipping",
+            "label": "تبويب «الشحن والإرجاع»",
+            "description": "مدة التوصيل، حد الشحن المجاني، ومدة الإرجاع وشروطه. التبويب لا يظهر إن تُرك فارغاً.",
+            "icon": "sicon-typography",
+            "format": "textarea",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "التوصيل خلال ٢–٤ أيام عمل. شحن مجاني فوق ٢٠٠ ر.س. إرجاع مجاني خلال ١٤ يوم.",
+            "minLength": 0,
+            "maxLength": 4000
         }
     ],
     "components": [

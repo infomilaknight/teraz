@@ -4,6 +4,7 @@ import Fslightbox from 'fslightbox';
 window.fslightbox = Fslightbox;
 import { zoom } from './partials/image-zoom';
 import { requireOptionBeforeAdd } from './partials/require-option-before-add';
+import { initProductTabs } from './partials/product-tabs';
 
 class Product extends BasePage {
     onReady() {
@@ -17,6 +18,7 @@ class Product extends BasePage {
 
         this.initProductOptionValidations();
         requireOptionBeforeAdd();
+        initProductTabs();
 
         if(imageZoom){
             // call the function when the page is ready

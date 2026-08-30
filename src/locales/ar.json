@@ -36,7 +36,10 @@
       "feature_pay_sub": "تابي وتمارا",
       "feature_support": "دعم يرد عليك",
       "feature_support_sub": "واتساب طوال اليوم",
-      "lookbook": "تنسيقات جاهزة"
+      "lookbook": "تنسيقات جاهزة",
+      "tab_description": "الوصف",
+      "tab_sizing": "المقاسات والقياسات",
+      "tab_shipping": "الشحن والإرجاع"
     }
   },
   "common": {

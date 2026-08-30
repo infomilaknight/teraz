@@ -683,3 +683,70 @@ salla-quantity-input[max='1']{
            text-[11px] font-bold px-2.5 py-1 rounded-tiny;
   }
 }
+
+/*
+* Teraz — product detail tabs.
+*
+* Panels ship open and stacked; `.is-enhanced` (set by js/partials/product-tabs.js) is what
+* turns them into tabs. Without JS the page still reads correctly, just longer.
+*/
+.tz-tabs {
+  @apply border-t border-line bg-paper py-10 md:py-14;
+
+  &__bar {
+    @apply flex gap-8 border-b border-line mb-8 overflow-x-auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  &__tab {
+    @apply relative shrink-0 pb-4 text-[15px] font-semibold text-ink-3 whitespace-nowrap
+           transition-colors cursor-pointer bg-transparent border-0;
+
+    &::after {
+      content: '';
+      @apply absolute inset-x-0 bottom-0 h-[2px] bg-ink scale-x-0 transition-transform origin-center;
+    }
+
+    &:hover { @apply text-ink-2; }
+
+    &[aria-selected='true'] {
+      @apply text-ink;
+      &::after { @apply scale-x-100; }
+    }
+  }
+
+  /* stacked and open until the script says otherwise */
+  &__panel + &__panel { @apply mt-8; }
+
+  &.is-enhanced &__panel {
+    @apply hidden mt-0;
+    &.is-open { @apply block; }
+  }
+}
+
+/* Long-form merchant copy — the description, sizing notes, shipping terms */
+.tz-prose {
+  @apply text-[15px] leading-[2] text-ink-2 max-w-[75ch];
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    @apply text-ink font-medium mt-6 mb-3 first:mt-0;
+  }
+  h2 { @apply text-xl; }
+  h3 { @apply text-lg; }
+
+  p { @apply mb-4 last:mb-0; }
+  a { @apply text-ink underline underline-offset-4 hover:text-ink-2; }
+  strong, b { @apply text-ink font-semibold; }
+  ul { @apply list-disc ps-5 space-y-2 mb-4; }
+  ol { @apply list-decimal ps-5 space-y-2 mb-4; }
+  img { @apply rounded max-w-full h-auto my-4; }
+
+  table {
+    @apply w-full text-[14px] border border-line rounded overflow-hidden my-4;
+    th { @apply bg-fill text-ink font-semibold text-start p-3 border-b border-line; }
+    td { @apply p-3 border-b border-line-soft; }
+    tr:last-child td { @apply border-b-0; }
+  }
+}

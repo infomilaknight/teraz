@@ -1,0 +1,52 @@
+{#
+Teraz — the product detail tabs.
+
+theme-raed keeps the description inside the narrow info column, squeezed under the price and
+the add-to-cart button, and clipped behind a "read more" link. On a fashion product the two
+questions that actually decide the purchase — how does it fit, and can I send it back — have
+nowhere to live at all.
+
+So the description moves out here, full width, beside two merchant-written tabs. A tab is
+rendered only when it has content, and the whole section disappears when none of them do, so
+a merchant who fills nothing loses nothing.
+
+Tabs are progressive: without JS every panel is visible and stacked, which is a readable page.
+The script (js/partials/product-tabs.js) is what collapses them into tabs.
+#}
+{% set tz_desc = product.description|replace({"&nbsp;":"\n"})|trim %}
+{% set tz_sizing = theme.settings.get('tz_tab_sizing') %}
+{% set tz_shipping = theme.settings.get('tz_tab_shipping') %}
+
+{% if tz_desc or tz_sizing or tz_shipping %}
+    <section class="tz-tabs" data-tz-tabs>
+        <div class="container">
+            <div class="tz-tabs__bar" role="tablist">
+                {% if tz_desc %}
+                    <button type="button" class="tz-tabs__tab" role="tab" data-tz-tab="desc" aria-selected="true">{{ trans('pages.teraz.tab_description') }}</button>
+                {% endif %}
+                {% if tz_sizing %}
+                    <button type="button" class="tz-tabs__tab" role="tab" data-tz-tab="sizing" aria-selected="false">{{ trans('pages.teraz.tab_sizing') }}</button>
+                {% endif %}
+                {% if tz_shipping %}
+                    <button type="button" class="tz-tabs__tab" role="tab" data-tz-tab="shipping" aria-selected="false">{{ trans('pages.teraz.tab_shipping') }}</button>
+                {% endif %}
+            </div>
+
+            {% if tz_desc %}
+                <div class="tz-tabs__panel" role="tabpanel" data-tz-panel="desc">
+                    <article class="tz-prose">{{ tz_desc|raw }}</article>
+                </div>
+            {% endif %}
+            {% if tz_sizing %}
+                <div class="tz-tabs__panel" role="tabpanel" data-tz-panel="sizing">
+                    <article class="tz-prose">{{ tz_sizing|raw }}</article>
+                </div>
+            {% endif %}
+            {% if tz_shipping %}
+                <div class="tz-tabs__panel" role="tabpanel" data-tz-panel="shipping">
+                    <article class="tz-prose">{{ tz_shipping|raw }}</article>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endif %}
