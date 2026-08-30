@@ -1,0 +1,41 @@
+{#
+Teraz — the hero.
+
+Drawn by the theme, not left to a component the merchant has to discover. It ships with a
+default image so a store that has configured nothing still opens on something, and every
+part of it — image, video, copy, button — is a theme setting.
+
+A video is optional and layered over the image: the image paints first and the video fades in
+only once it can play, so a slow connection sees a hero rather than a black rectangle, and
+anyone on `prefers-reduced-motion` keeps the still.
+#}
+{% if theme.settings.get('tz_hero_enabled', true) %}
+    {% set tz_hero_img = theme.settings.get('tz_hero_image') ?: 'images/teraz/hero.jpg'|asset %}
+    {% set tz_hero_video = theme.settings.get('tz_hero_video') %}
+    <section class="tz-hero">
+        <div class="tz-hero__media">
+            <img class="tz-hero__poster" src="{{ tz_hero_img }}" alt="" fetchpriority="high" width="1600" height="700">
+            {% if tz_hero_video %}
+                <video class="tz-hero__video" playsinline muted loop autoplay preload="metadata"
+                       poster="{{ tz_hero_img }}" aria-hidden="true" tabindex="-1">
+                    <source src="{{ tz_hero_video }}" type="video/mp4">
+                </video>
+            {% endif %}
+            <span class="tz-hero__scrim"></span>
+        </div>
+
+        <div class="container tz-hero__body">
+            {% if theme.settings.get('tz_hero_eyebrow', trans('pages.teraz.hero_eyebrow')) %}
+                <p class="tz-hero__eyebrow">{{ theme.settings.get('tz_hero_eyebrow', trans('pages.teraz.hero_eyebrow')) }}</p>
+            {% endif %}
+            <h2 class="tz-hero__title">{{ theme.settings.get('tz_hero_title', trans('pages.teraz.hero_title')) }}</h2>
+            {% if theme.settings.get('tz_hero_text', trans('pages.teraz.hero_text')) %}
+                <p class="tz-hero__desc">{{ theme.settings.get('tz_hero_text', trans('pages.teraz.hero_text')) }}</p>
+            {% endif %}
+            {% set tz_hero_url = theme.settings.get('tz_hero_url') %}
+            <a class="tz-hero__cta" {% if tz_hero_url %}href="{{ tz_hero_url }}"{% endif %}>
+                {{ theme.settings.get('tz_hero_cta', trans('pages.teraz.hero_cta')) }}
+            </a>
+        </div>
+    </section>
+{% endif %}

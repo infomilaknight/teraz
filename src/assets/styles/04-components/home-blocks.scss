@@ -566,3 +566,93 @@
     small { @apply text-[13px] opacity-80; }
   }
 }
+
+/*
+* Teraz — the homepage sections the theme draws itself.
+*
+* All of these ship with a default image and copy, so a store that has configured nothing
+* still opens on a complete page rather than on a bare product grid.
+*/
+.tz-cats-wrap { @apply pt-10 md:pt-12; }
+
+.tz-cats {
+  @apply grid grid-cols-3 sm:grid-cols-5 gap-4 md:gap-6;
+
+  &__item { @apply flex flex-col items-center gap-3; }
+
+  &__ring {
+    @apply block w-full aspect-square rounded-full overflow-hidden bg-fill
+           ring-1 ring-line transition-all;
+    img { @apply w-full h-full object-cover transition-transform duration-500; }
+  }
+
+  &__item:hover &__ring {
+    @apply ring-2;
+    --tw-ring-color: var(--color-primary);
+    img { @apply scale-105; }
+  }
+
+  &__label { @apply text-[13.5px] font-semibold text-ink text-center; }
+}
+
+/* Product rows */
+.tz-row {
+  @apply py-10 md:py-14;
+
+  &--tinted { @apply bg-paper border-y border-line; }
+
+  &--dark {
+    @apply bg-ink py-12 md:py-16;
+    color: #fff;
+    h1, h2, h3, b, strong { color: #fff; }
+    p, span { color: rgba(255, 255, 255, .82); }
+  }
+}
+
+/* Editorial banners */
+.tz-banners-wrap { @apply py-8 md:py-12; }
+
+.tz-banners {
+  @apply grid gap-5 grid-cols-1 lg:grid-cols-[1.15fr_1fr] items-stretch;
+
+  &__lg, &__sm {
+    @apply relative block rounded overflow-hidden bg-fill;
+    img { @apply absolute inset-0 w-full h-full object-cover transition-transform duration-500; }
+    &:hover img { @apply scale-[1.03]; }
+  }
+
+  &__lg { @apply min-h-[320px] md:min-h-[400px]; }
+  &__col { @apply grid grid-rows-2 gap-5; }
+  &__sm { @apply min-h-[150px] md:min-h-[190px]; }
+
+  &__scrim {
+    @apply absolute inset-0;
+    background: linear-gradient(to top, rgba(15, 15, 18, .62), transparent 58%);
+  }
+
+  &__copy {
+    @apply absolute inset-x-0 bottom-0 flex flex-col gap-2 p-7 md:p-10 text-white;
+
+    em {
+      @apply not-italic text-[11px] font-semibold tracking-[.16em];
+      color: rgba(255, 255, 255, .72);
+    }
+    b {
+      font-family: var(--font-display);
+      @apply text-2xl md:text-[32px] font-medium leading-tight;
+    }
+    span { @apply text-sm; color: rgba(255, 255, 255, .85); }
+
+    /* the short banners sit on pale artwork, so their copy reads dark from a white wash */
+    &--light {
+      @apply justify-center inset-y-0 p-6 md:p-8;
+      background: linear-gradient(to left, rgba(255, 255, 255, .93) 34%, rgba(255, 255, 255, .05));
+      b    { @apply text-ink text-xl md:text-[22px]; }
+      span { @apply text-ink-2; }
+
+      [dir='ltr'] & {
+        background: linear-gradient(to right, rgba(255, 255, 255, .93) 34%, rgba(255, 255, 255, .05));
+      }
+    }
+  }
+}

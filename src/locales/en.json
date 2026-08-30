@@ -39,7 +39,25 @@
       "lookbook": "Shop the look",
       "tab_description": "Description",
       "tab_sizing": "Sizing & fit",
-      "tab_shipping": "Shipping & returns"
+      "tab_shipping": "Shipping & returns",
+      "hero_eyebrow": "This season",
+      "hero_title": "Light, loose, made for the heat",
+      "hero_text": "Wide cuts in fabrics that breathe, for the weather and the way people here dress.",
+      "hero_cta": "Shop now",
+      "cat_1": "Abayas",
+      "cat_2": "Dresses",
+      "cat_3": "Essentials",
+      "cat_4": "Accessories",
+      "cat_5": "Shoes",
+      "row_latest": "New arrivals",
+      "row_sales": "On sale",
+      "banner_lg_eyebrow": "Limited run",
+      "banner_lg_title": "Natural linen",
+      "banner_lg_text": "Summer pieces in a fabric that breathes, made in small batches.",
+      "banner_sm1_title": "Wardrobe essentials",
+      "banner_sm1_text": "The pieces you wear daily",
+      "banner_sm2_title": "Accessories",
+      "banner_sm2_text": "The detail that finishes the look"
     }
   },
   "common": {

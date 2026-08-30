@@ -615,6 +615,529 @@
             "placeholder": "التوصيل خلال ٢–٤ أيام عمل. شحن مجاني فوق ٢٠٠ ر.س. إرجاع مجاني خلال ١٤ يوم.",
             "minLength": 0,
             "maxLength": 4000
+        },
+        {
+            "type": "static",
+            "id": "tz-l-hero",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "tz-h-hero",
+            "variant": "h6",
+            "value": "<div class='rounded-lg' style=\"background-color:#16161A;display:flex;justify-content:center;align-items:center;padding:15px;margin-bottom:20px !important;\"><h6 style='color:#fff;font-size:15px;font-weight:bold;'>الهيرو — أعلى الصفحة الرئيسية</h6></div>"
+        },
+        {
+            "type": "boolean",
+            "id": "tz_hero_enabled",
+            "label": "إظهار الهيرو",
+            "description": null,
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "id": "tz_hero_image",
+            "label": "صورة الهيرو",
+            "description": "المقاس المناسب ١٦٠٠×٧٠٠ بكسل. يُستخدم تصميم الثيم الافتراضي إن تُرك فارغاً.",
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_hero_video",
+            "label": "رابط فيديو (MP4) — اختياري",
+            "description": "ارفع الفيديو في «الملفات» والصق رابطه. يعمل صامتاً ومتكرراً فوق الصورة، والصورة تبقى ظاهرة لمن فعّل «تقليل الحركة».",
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "https://cdn.salla.sa/.../hero.mp4",
+            "minLength": 0,
+            "maxLength": 400
+        },
+        {
+            "type": "string",
+            "id": "tz_hero_eyebrow",
+            "label": "سطر علوي",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "مجموعة الموسم",
+            "minLength": 0,
+            "maxLength": 50
+        },
+        {
+            "type": "string",
+            "id": "tz_hero_title",
+            "label": "العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "خفيف، فضفاض، مصنوع للحرّ",
+            "minLength": 0,
+            "maxLength": 90
+        },
+        {
+            "type": "string",
+            "id": "tz_hero_text",
+            "label": "نص تحت العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "قطع بقصّات واسعة وخامات تتنفّس.",
+            "minLength": 0,
+            "maxLength": 180
+        },
+        {
+            "type": "string",
+            "id": "tz_hero_cta",
+            "label": "نص الزر",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "تسوّقي الآن",
+            "minLength": 0,
+            "maxLength": 40
+        },
+        {
+            "type": "string",
+            "id": "tz_hero_url",
+            "label": "رابط الزر",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "static",
+            "id": "tz-l-cats",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "tz-h-cats",
+            "variant": "h6",
+            "value": "<div class='rounded-lg' style=\"background-color:#16161A;display:flex;justify-content:center;align-items:center;padding:15px;margin-bottom:20px !important;\"><h6 style='color:#fff;font-size:15px;font-weight:bold;'>الأقسام السريعة — دوائر تحت الهيرو</h6></div>"
+        },
+        {
+            "type": "boolean",
+            "id": "tz_cats_enabled",
+            "label": "إظهار الأقسام السريعة",
+            "description": null,
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_1_image",
+            "label": "القسم 1 — الصورة",
+            "description": "مربعة، ٣٠٠×٣٠٠ بكسل.",
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_1_label",
+            "label": "القسم 1 — الاسم",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "عبايات",
+            "minLength": 0,
+            "maxLength": 30
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_1_url",
+            "label": "القسم 1 — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_2_image",
+            "label": "القسم 2 — الصورة",
+            "description": null,
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_2_label",
+            "label": "القسم 2 — الاسم",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "فساتين",
+            "minLength": 0,
+            "maxLength": 30
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_2_url",
+            "label": "القسم 2 — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_3_image",
+            "label": "القسم 3 — الصورة",
+            "description": null,
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_3_label",
+            "label": "القسم 3 — الاسم",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "أساسيات",
+            "minLength": 0,
+            "maxLength": 30
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_3_url",
+            "label": "القسم 3 — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_4_image",
+            "label": "القسم 4 — الصورة",
+            "description": null,
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_4_label",
+            "label": "القسم 4 — الاسم",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "إكسسوارات",
+            "minLength": 0,
+            "maxLength": 30
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_4_url",
+            "label": "القسم 4 — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_5_image",
+            "label": "القسم 5 — الصورة",
+            "description": null,
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_5_label",
+            "label": "القسم 5 — الاسم",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "أحذية",
+            "minLength": 0,
+            "maxLength": 30
+        },
+        {
+            "type": "string",
+            "id": "tz_cat_5_url",
+            "label": "القسم 5 — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "static",
+            "id": "tz-l-rows",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "tz-h-rows",
+            "variant": "h6",
+            "value": "<div class='rounded-lg' style=\"background-color:#16161A;display:flex;justify-content:center;align-items:center;padding:15px;margin-bottom:20px !important;\"><h6 style='color:#fff;font-size:15px;font-weight:bold;'>صفوف المنتجات</h6></div>"
+        },
+        {
+            "type": "boolean",
+            "id": "tz_latest_enabled",
+            "label": "إظهار صف «وصل حديثاً»",
+            "description": null,
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "id": "tz_latest_title",
+            "label": "عنوان الصف",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "وصل حديثاً",
+            "minLength": 0,
+            "maxLength": 50
+        },
+        {
+            "type": "boolean",
+            "id": "tz_sales_enabled",
+            "label": "إظهار صف «التخفيضات»",
+            "description": null,
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "id": "tz_sales_title",
+            "label": "عنوان الصف",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "التخفيضات",
+            "minLength": 0,
+            "maxLength": 50
+        },
+        {
+            "type": "boolean",
+            "id": "tz_testimonials_enabled",
+            "label": "إظهار آراء العملاء",
+            "description": "يظهر فقط إن كانت التقييمات مفعّلة في إعدادات المتجر.",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "static",
+            "id": "tz-l-banners",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "tz-h-banners",
+            "variant": "h6",
+            "value": "<div class='rounded-lg' style=\"background-color:#16161A;display:flex;justify-content:center;align-items:center;padding:15px;margin-bottom:20px !important;\"><h6 style='color:#fff;font-size:15px;font-weight:bold;'>البنرات التحريرية</h6></div>"
+        },
+        {
+            "type": "boolean",
+            "id": "tz_banners_enabled",
+            "label": "إظهار البنرات",
+            "description": null,
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_lg_image",
+            "label": "البنر الكبير — الصورة",
+            "description": "٩٠٠×٥٦٠ بكسل.",
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_lg_eyebrow",
+            "label": "البنر الكبير — سطر علوي",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "تشكيلة محدودة",
+            "minLength": 0,
+            "maxLength": 40
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_lg_title",
+            "label": "البنر الكبير — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "الكتان الطبيعي",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_lg_text",
+            "label": "البنر الكبير — نص",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "قطع صيفية بخامة تتنفّس.",
+            "minLength": 0,
+            "maxLength": 140
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_lg_url",
+            "label": "البنر الكبير — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_sm1_image",
+            "label": "البنر الصغير ١ — الصورة",
+            "description": "٦٢٠×٢٦٠ بكسل.",
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_sm1_title",
+            "label": "البنر الصغير ١ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "أساسيات الخزانة",
+            "minLength": 0,
+            "maxLength": 50
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_sm1_text",
+            "label": "البنر الصغير ١ — نص",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "قطع تلبسيها كل يوم",
+            "minLength": 0,
+            "maxLength": 90
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_sm1_url",
+            "label": "البنر الصغير ١ — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_sm2_image",
+            "label": "البنر الصغير ٢ — الصورة",
+            "description": null,
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_sm2_title",
+            "label": "البنر الصغير ٢ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "إكسسوارات",
+            "minLength": 0,
+            "maxLength": 50
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_sm2_text",
+            "label": "البنر الصغير ٢ — نص",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "اللمسة التي تُكمل الإطلالة",
+            "minLength": 0,
+            "maxLength": 90
+        },
+        {
+            "type": "string",
+            "id": "tz_banner_sm2_url",
+            "label": "البنر الصغير ٢ — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
         }
     ],
     "components": [

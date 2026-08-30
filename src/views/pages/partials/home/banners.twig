@@ -1,0 +1,49 @@
+{#
+Teraz — the editorial banners.
+
+One tall banner beside two short ones. This is the theme's own break between the two product
+rows, so the homepage has a rhythm instead of being one grid after another. Each banner is a
+theme setting and is skipped when it has no image.
+#}
+{% if theme.settings.get('tz_banners_enabled', true) %}
+    {% set tz_b_lg = theme.settings.get('tz_banner_lg_image') ?: 'images/teraz/banner-lg.jpg'|asset %}
+    {% set tz_b_s1 = theme.settings.get('tz_banner_sm1_image') ?: 'images/teraz/banner-sm1.jpg'|asset %}
+    {% set tz_b_s2 = theme.settings.get('tz_banner_sm2_image') ?: 'images/teraz/banner-sm2.jpg'|asset %}
+    <section class="tz-banners-wrap">
+        <div class="container">
+            <div class="tz-banners">
+                {% if tz_b_lg %}
+                    <a class="tz-banners__lg" {% if theme.settings.get('tz_banner_lg_url') %}href="{{ theme.settings.get('tz_banner_lg_url') }}"{% endif %}>
+                        <img src="{{ tz_b_lg }}" alt="" loading="lazy" width="900" height="560">
+                        <span class="tz-banners__scrim"></span>
+                        <span class="tz-banners__copy">
+                            <em>{{ theme.settings.get('tz_banner_lg_eyebrow', trans('pages.teraz.banner_lg_eyebrow')) }}</em>
+                            <b>{{ theme.settings.get('tz_banner_lg_title', trans('pages.teraz.banner_lg_title')) }}</b>
+                            <span>{{ theme.settings.get('tz_banner_lg_text', trans('pages.teraz.banner_lg_text')) }}</span>
+                        </span>
+                    </a>
+                {% endif %}
+                <div class="tz-banners__col">
+                    {% if tz_b_s1 %}
+                        <a class="tz-banners__sm" {% if theme.settings.get('tz_banner_sm1_url') %}href="{{ theme.settings.get('tz_banner_sm1_url') }}"{% endif %}>
+                            <img src="{{ tz_b_s1 }}" alt="" loading="lazy" width="620" height="260">
+                            <span class="tz-banners__copy tz-banners__copy--light">
+                                <b>{{ theme.settings.get('tz_banner_sm1_title', trans('pages.teraz.banner_sm1_title')) }}</b>
+                                <span>{{ theme.settings.get('tz_banner_sm1_text', trans('pages.teraz.banner_sm1_text')) }}</span>
+                            </span>
+                        </a>
+                    {% endif %}
+                    {% if tz_b_s2 %}
+                        <a class="tz-banners__sm" {% if theme.settings.get('tz_banner_sm2_url') %}href="{{ theme.settings.get('tz_banner_sm2_url') }}"{% endif %}>
+                            <img src="{{ tz_b_s2 }}" alt="" loading="lazy" width="620" height="260">
+                            <span class="tz-banners__copy tz-banners__copy--light">
+                                <b>{{ theme.settings.get('tz_banner_sm2_title', trans('pages.teraz.banner_sm2_title')) }}</b>
+                                <span>{{ theme.settings.get('tz_banner_sm2_text', trans('pages.teraz.banner_sm2_text')) }}</span>
+                            </span>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

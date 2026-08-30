@@ -7,17 +7,36 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
-    {# What the merchant composes in the editor — hero, sliders, banners, whatever they added #}
+    {#
+      Teraz composes the homepage itself.
+
+      theme-raed's index.twig is a single `{% component home %}` line, so the whole page is
+      whatever sections the merchant happened to add — a store that configures nothing ships a
+      bare product grid. These sections are drawn by the theme instead, each with an off switch
+      and every image, heading and link editable in Theme Settings, and each shipping a default
+      so a fresh install already looks like a store.
+
+      `{% component home %}` still renders, right after the hero, so anything a merchant has
+      built keeps its place rather than being displaced.
+    #}
+    {% include 'pages.partials.home.hero' %}
+
+    {# whatever the merchant added in the editor #}
     {% component home %}
 
-    {#
-      Teraz structure. theme-raed leaves the entire homepage to the editor, which means a
-      merchant who configures nothing ships a page that is just a product grid. These two
-      sections are drawn by the theme instead, so the storefront is coherent from the first
-      install; both have off switches and fully editable content in Theme Settings.
-    #}
+    {% include 'pages.partials.home.categories' %}
     {% include 'pages.partials.home.features' %}
+    {% include 'pages.partials.home.products' %}
+    {% include 'pages.partials.home.banners' %}
     {% include 'pages.partials.home.lookbook' %}
+
+    {% if theme.settings.get('tz_testimonials_enabled', true) and store.settings.testimonial.enabled %}
+        <section class="tz-row tz-row--dark">
+            <div class="container">
+                <salla-testimonials data-testid="store-home-teraz-testimonials"></salla-testimonials>
+            </div>
+        </section>
+    {% endif %}
 {% endblock %}
 {% block scripts %}
     <script defer src="{{ 'home.js' | asset }}"></script>

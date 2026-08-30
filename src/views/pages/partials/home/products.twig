@@ -1,0 +1,38 @@
+{#
+Teraz — the product rows.
+
+Two rows drawn by the theme: what just arrived, and what sells. Both go through Salla's own
+`salla-products-slider`, so pricing, wishlist, add-to-cart and the sold-out states all keep
+working exactly as the platform provides them — the theme only decides that these rows exist
+and what they are called.
+
+`limit` is fixed at 8: enough to fill a desktop row and scroll on mobile, few enough that the
+homepage does not turn into a catalogue.
+#}
+{% if theme.settings.get('tz_latest_enabled', true) %}
+    <section class="tz-row">
+        <div class="container">
+            <salla-products-slider
+                    data-testid="store-home-teraz-latest"
+                    source="latest"
+                    limit="8"
+                    display-all-url
+                    block-title="{{ theme.settings.get('tz_latest_title', trans('pages.teraz.row_latest')) }}">
+            </salla-products-slider>
+        </div>
+    </section>
+{% endif %}
+
+{% if theme.settings.get('tz_sales_enabled', true) %}
+    <section class="tz-row tz-row--tinted">
+        <div class="container">
+            <salla-products-slider
+                    data-testid="store-home-teraz-sales"
+                    source="sales"
+                    limit="8"
+                    display-all-url
+                    block-title="{{ theme.settings.get('tz_sales_title', trans('pages.teraz.row_sales')) }}">
+            </salla-products-slider>
+        </div>
+    </section>
+{% endif %}

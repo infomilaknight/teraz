@@ -1,0 +1,30 @@
+{#
+Teraz — the category row.
+
+Five round entry points under the hero. On a fashion store this is how people actually start
+browsing, so it is drawn by the theme with defaults rather than waiting on a merchant to add
+a "quick links" component. Each tile is a theme setting; a tile with no image is skipped.
+#}
+{% if theme.settings.get('tz_cats_enabled', true) %}
+    {% set tz_cats = [
+        { img: theme.settings.get('tz_cat_1_image') ?: 'images/teraz/cat-1.jpg'|asset, label: theme.settings.get('tz_cat_1_label', trans('pages.teraz.cat_1')), url: theme.settings.get('tz_cat_1_url') },
+        { img: theme.settings.get('tz_cat_2_image') ?: 'images/teraz/cat-2.jpg'|asset, label: theme.settings.get('tz_cat_2_label', trans('pages.teraz.cat_2')), url: theme.settings.get('tz_cat_2_url') },
+        { img: theme.settings.get('tz_cat_3_image') ?: 'images/teraz/cat-3.jpg'|asset, label: theme.settings.get('tz_cat_3_label', trans('pages.teraz.cat_3')), url: theme.settings.get('tz_cat_3_url') },
+        { img: theme.settings.get('tz_cat_4_image') ?: 'images/teraz/cat-4.jpg'|asset, label: theme.settings.get('tz_cat_4_label', trans('pages.teraz.cat_4')), url: theme.settings.get('tz_cat_4_url') },
+        { img: theme.settings.get('tz_cat_5_image') ?: 'images/teraz/cat-5.jpg'|asset, label: theme.settings.get('tz_cat_5_label', trans('pages.teraz.cat_5')), url: theme.settings.get('tz_cat_5_url') }
+    ] %}
+    <section class="tz-cats-wrap">
+        <div class="container">
+            <div class="tz-cats">
+                {% for c in tz_cats %}
+                    {% if c.img %}
+                        <a class="tz-cats__item" {% if c.url %}href="{{ c.url }}"{% endif %}>
+                            <span class="tz-cats__ring"><img src="{{ c.img }}" alt="{{ c.label }}" loading="lazy" width="300" height="300"></span>
+                            <span class="tz-cats__label">{{ c.label }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
