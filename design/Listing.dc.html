@@ -1,0 +1,469 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; font-family: "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif; color: #16161A; }
+    a { color: #16161A; text-decoration: none; }
+    a:hover { color: #55555C; }
+    .tz-h { font-family: "Readex Pro", "IBM Plex Sans Arabic", system-ui, sans-serif; font-weight: 500; letter-spacing: -.01em; }
+    .tz-wrap { width: 1280px; margin: 0 auto; }
+    .tz-card { background: #fff; border: 1px solid #E6E4E0; border-radius: 10px; overflow: hidden; }
+    .tz-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tz-frame { position: relative; aspect-ratio: 4/5; background: #EFEDEA; overflow: hidden; }
+    .tz-wish { position: absolute; top: 10px; left: 10px; width: 32px; height: 32px; border-radius: 999px; background: rgba(255,255,255,.94); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .tz-badge { position: absolute; top: 12px; right: 12px; color: #fff; padding: 4px 9px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+    .tz-meta { padding: 15px 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+    .tz-name { font-size: 14px; font-weight: 600; line-height: 1.5; }
+    .tz-price { font-size: 15px; font-weight: 700; }
+    .tz-old { font-size: 13px; color: #8A8A93; text-decoration: line-through; }
+    .tz-sw { width: 15px; height: 15px; border-radius: 999px; border: 1px solid rgba(0,0,0,.12); }
+    .tz-filter-h { font-size: 13.5px; font-weight: 600; padding-bottom: 12px; }
+    .tz-row { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 13.5px; color: #55555C; }
+    .tz-row:hover { color: #16161A; }
+  </style>
+</helmet>
+<div dir="rtl" lang="ar" style="width: 1440px; background: #FFFFFF;">
+
+  <div style="border-bottom: 1px solid #E6E4E0; background: #fff;">
+    <div class="tz-wrap" style="display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 32px;">
+      <div class="tz-h" style="font-size: 26px;">طِراز</div>
+      <div style="flex: 1; max-width: 460px;">
+        <div style="height: 42px; border: 1px solid #E6E4E0; border-radius: 8px; display: flex; align-items: center; padding: 0 14px; gap: 10px; background: #FAF9F7;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8A8A93" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <span style="font-size: 13.5px; color: #8A8A93;">ابحث عن عباية، فستان، حذاء…</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 22px;">
+        <span style="font-size: 13.5px;">حسابي</span>
+        <div style="display: flex; align-items: center; gap: 9px; background: {{accent}}; color: #fff; height: 42px; padding: 0 18px; border-radius: 8px; font-size: 13.5px; font-weight: 600;">السلة (٢)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-wrap" style="padding: 20px 0 8px; font-size: 12.5px; color: #8A8A93; display: flex; gap: 8px;">
+    <span>الرئيسية</span><span>/</span><span>نسائي</span><span>/</span><span style="color: #16161A;">عبايات وفساتين</span>
+  </div>
+
+  <div class="tz-wrap" style="padding: 8px 0 28px; display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 1px solid #E6E4E0;">
+    <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 20px;">
+      <div class="tz-h" style="font-size: 34px;">عبايات وفساتين</div>
+      <div style="font-size: 14px; color: #55555C;">{{ resultCount }} منتج</div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 22px;">
+      <span style="font-size: 13px; color: #8A8A93;">ترتيب حسب</span>
+      <div onClick="{{ cycleSort }}" style="height: 40px; border: 1px solid #E6E4E0; border-radius: 8px; display: flex; align-items: center; gap: 10px; padding: 0 14px; font-size: 13.5px; font-weight: 500; cursor: pointer; background: #fff;">
+        <span>{{ sortLabel }}</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A8A93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-wrap" style="display: grid; grid-template-columns: 258px 1fr; gap: 40px; padding: 32px 0 72px; align-items: start;">
+
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 15px; font-weight: 600;">تصفية</div>
+        <div onClick="{{ clearAll }}" style="font-size: 12.5px; color: {{ clearColor }}; cursor: pointer; text-decoration: underline;">مسح الكل</div>
+      </div>
+
+      <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="2">
+            <div onClick="{{ c.remove }}" style="display: flex; align-items: center; gap: 7px; background: #F3F1EE; border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer;">
+              <span>{{ c.label }}</span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#8A8A93" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <div style="border-top: 1px solid #E6E4E0; padding-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <div class="tz-filter-h">النوع</div>
+        <sc-for list="{{ typeOpts }}" as="o" hint-placeholder-count="3">
+          <div class="tz-row" onClick="{{ o.toggle }}">
+            <div style="width: 17px; height: 17px; border-radius: 4px; border: 1.5px solid {{ o.border }}; background: {{ o.fill }}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="opacity: {{ o.tick }};"><path d="M5 12.5l4.5 4.5L19 7"/></svg>
+            </div>
+            <span style="color: {{ o.fg }};">{{ o.label }}</span>
+            <span style="margin-right: auto; font-size: 12px; color: #B0ADA8;">{{ o.count }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="border-top: 1px solid #E6E4E0; padding-top: 20px; display: flex; flex-direction: column; gap: 14px;">
+        <div class="tz-filter-h" style="padding-bottom: 0;">المقاس</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <sc-for list="{{ sizeOpts }}" as="o" hint-placeholder-count="5">
+            <div onClick="{{ o.toggle }}" style="min-width: 44px; height: 38px; padding: 0 12px; border-radius: 8px; border: 1px solid {{ o.border }}; background: {{ o.bg }}; color: {{ o.fg }}; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; cursor: pointer;">{{ o.label }}</div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #E6E4E0; padding-top: 20px; display: flex; flex-direction: column; gap: 14px;">
+        <div class="tz-filter-h" style="padding-bottom: 0;">اللون</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <sc-for list="{{ colorOpts }}" as="o" hint-placeholder-count="7">
+            <div onClick="{{ o.toggle }}" style="display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer;">
+              <div style="width: 30px; height: 30px; border-radius: 999px; background: {{ o.hex }}; border: 1px solid rgba(0,0,0,.14); outline: 2px solid {{ o.ring }}; outline-offset: 2px;"></div>
+              <span style="font-size: 11px; color: {{ o.fg }};">{{ o.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #E6E4E0; padding-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <div class="tz-filter-h">السعر</div>
+        <sc-for list="{{ priceOpts }}" as="o" hint-placeholder-count="4">
+          <div class="tz-row" onClick="{{ o.toggle }}">
+            <div style="width: 17px; height: 17px; border-radius: 999px; border: 1.5px solid {{ o.border }}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <div style="width: 8px; height: 8px; border-radius: 999px; background: {{ o.dot }};"></div>
+            </div>
+            <span style="color: {{ o.fg }};">{{ o.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="border-top: 1px solid #E6E4E0; padding-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <div class="tz-filter-h">أخرى</div>
+        <div class="tz-row" onClick="{{ saleToggle }}">
+          <div style="width: 17px; height: 17px; border-radius: 4px; border: 1.5px solid {{ saleBorder }}; background: {{ saleFill }}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="opacity: {{ saleTick }};"><path d="M5 12.5l4.5 4.5L19 7"/></svg>
+          </div>
+          <span style="color: {{ saleFg }};">عليها تخفيض</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 28px;">
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px;">
+      <sc-if value="{{ v0 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o0 }};">
+          <div class="tz-frame">
+            <img src="p-abaya-linen.jpg" class="tz-img" alt="">
+            <div class="tz-badge" style="background: #C0261E;">خصم ٣٠٪</div>
+            <div class="tz-wish" onClick="{{ w0.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w0.fill }}" stroke="{{ w0.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">عباية كلوش كتان</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price" style="color: #C0261E;">٢٤٥ ر.س</div><div class="tz-old">٣٥٠ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #16161A;"></div><div class="tz-sw" style="background: #C8B9A6;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">S · M · L</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v1 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o1 }};">
+          <div class="tz-frame">
+            <img src="p-abaya-black.jpg" class="tz-img" alt="">
+            <div class="tz-wish" onClick="{{ w1.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w1.fill }}" stroke="{{ w1.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">عباية سادة بحزام</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price">٢٧٥ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #16161A;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">M · L · XL</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v2 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o2 }};">
+          <div class="tz-frame">
+            <img src="p-dress-ribbed.jpg" class="tz-img" alt="">
+            <div class="tz-wish" onClick="{{ w2.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w2.fill }}" stroke="{{ w2.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">فستان ميدي مضلّع</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price">٣١٠ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #2F3A44;"></div><div class="tz-sw" style="background: #A7563F;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">S · M</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v3 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o3 }};">
+          <div class="tz-frame">
+            <img src="p-dress-maxi.jpg" class="tz-img" alt="">
+            <div class="tz-badge" style="background: #C0261E;">خصم ١٩٪</div>
+            <div class="tz-wish" onClick="{{ w3.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w3.fill }}" stroke="{{ w3.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">فستان ماكسي كريب</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price" style="color: #C0261E;">٤٢٠ ر.س</div><div class="tz-old">٥٢٠ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #16161A;"></div><div class="tz-sw" style="background: #6B7A6E;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">M · L · XL</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v4 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o4 }};">
+          <div class="tz-frame">
+            <img src="p-shirt-white.jpg" class="tz-img" alt="">
+            <div class="tz-wish" onClick="{{ w4.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w4.fill }}" stroke="{{ w4.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">قميص أوفر سايز</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price">١٨٩ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #FFFFFF;"></div><div class="tz-sw" style="background: #C8B9A6;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">S · M · L · XL</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v5 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o5 }};">
+          <div class="tz-frame">
+            <img src="p-trousers-wide.jpg" class="tz-img" alt="">
+            <div class="tz-badge" style="background: #C0261E;">خصم ١٩٪</div>
+            <div class="tz-wish" onClick="{{ w5.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w5.fill }}" stroke="{{ w5.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">بنطلون واسع</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price" style="color: #C0261E;">٢١٠ ر.س</div><div class="tz-old">٢٦٠ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #16161A;"></div><div class="tz-sw" style="background: #5A5F63;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">S · M · L</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v6 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o6 }};">
+          <div class="tz-frame">
+            <img src="look-evening.jpg" class="tz-img" alt="">
+            <div class="tz-wish" onClick="{{ w6.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w6.fill }}" stroke="{{ w6.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">عباية سهرة مطرّزة</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price">٦٤٠ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #16161A;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">M · L</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v7 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o7 }};">
+          <div class="tz-frame">
+            <img src="p-blouse-satin.jpg" class="tz-img" alt="">
+            <div class="tz-badge" style="background: #C0261E;">خصم ١٩٪</div>
+            <div class="tz-wish" onClick="{{ w7.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w7.fill }}" stroke="{{ w7.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">بلوزة ساتان</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price" style="color: #C0261E;">١٤٥ ر.س</div><div class="tz-old">١٨٠ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #A7563F;"></div><div class="tz-sw" style="background: #FFFFFF;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">S · M · L</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v8 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o8 }};">
+          <div class="tz-frame">
+            <img src="look-weekend.jpg" class="tz-img" alt="">
+            <div class="tz-wish" onClick="{{ w8.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w8.fill }}" stroke="{{ w8.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">فستان قصير قطن</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price">١٦٥ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #2F3A44;"></div><div class="tz-sw" style="background: #FFFFFF;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">S · M · L</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v9 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o9 }};">
+          <div class="tz-frame">
+            <img src="p-abaya-olive.jpg" class="tz-img" alt="">
+            <div class="tz-badge" style="background: #C0261E;">خصم ١٣٪</div>
+            <div class="tz-wish" onClick="{{ w9.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w9.fill }}" stroke="{{ w9.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">عباية دوام زيتي</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price" style="color: #C0261E;">٢٩٥ ر.س</div><div class="tz-old">٣٤٠ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #6B7A6E;"></div><div class="tz-sw" style="background: #16161A;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">M · L · XL</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v10 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o10 }};">
+          <div class="tz-frame">
+            <img src="p-skirt-pleated.jpg" class="tz-img" alt="">
+            <div class="tz-wish" onClick="{{ w10.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w10.fill }}" stroke="{{ w10.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">تنورة بليسيه</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price">١٧٥ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #C8B9A6;"></div><div class="tz-sw" style="background: #5A5F63;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">S · M</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ v11 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column; order: {{ o11 }};">
+          <div class="tz-frame">
+            <img src="p-abaya-navy.jpg" class="tz-img" alt="">
+            <div class="tz-wish" onClick="{{ w11.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w11.fill }}" stroke="{{ w11.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">عباية كتان كحلي</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price">٣٨٠ ر.س</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+              <div style="display: flex; gap: 6px;"><div class="tz-sw" style="background: #2F3A44;"></div></div>
+              <div style="font-size: 11.5px; color: #B0ADA8;">M · L</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      </div>
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div style="border: 1px dashed #E6E4E0; border-radius: 10px; padding: 72px 24px; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#C9C5BF" stroke-width="1.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <div style="font-size: 16px; font-weight: 600;">ما فيه منتجات بهذه التصفية</div>
+          <div style="font-size: 13.5px; color: #8A8A93;">جرّب توسيع الخيارات أو امسح التصفية.</div>
+          <div onClick="{{ clearAll }}" style="margin-top: 6px; background: {{accent}}; color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer;">مسح التصفية</div>
+        </div>
+      </sc-if>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#16161A","options":["#16161A","#7A2E2A","#1F4E43","#3B3A6B"],"section":"الهوية"},"$preview":{"width":1440,"height":2470}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { types: [], sizes: [], colors: [], price: null, sale: false, sort: 0, wished: {} };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#16161A';
+    const S = this.state;
+    const PRODUCTS = [
+      {name:"عباية كلوش كتان", price:245, was:350, type:"عبايات", sizes:["S", "M", "L"], colors:["أسود", "بيج"]},
+      {name:"عباية سادة بحزام", price:275, was:null, type:"عبايات", sizes:["M", "L", "XL"], colors:["أسود"]},
+      {name:"فستان ميدي مضلّع", price:310, was:null, type:"فساتين", sizes:["S", "M"], colors:["أزرق", "طوبي"]},
+      {name:"فستان ماكسي كريب", price:420, was:520, type:"فساتين", sizes:["M", "L", "XL"], colors:["أسود", "زيتي"]},
+      {name:"قميص أوفر سايز", price:189, was:null, type:"أساسيات", sizes:["S", "M", "L", "XL"], colors:["أبيض", "بيج"]},
+      {name:"بنطلون واسع", price:210, was:260, type:"أساسيات", sizes:["S", "M", "L"], colors:["أسود", "رمادي"]},
+      {name:"عباية سهرة مطرّزة", price:640, was:null, type:"عبايات", sizes:["M", "L"], colors:["أسود"]},
+      {name:"بلوزة ساتان", price:145, was:180, type:"أساسيات", sizes:["S", "M", "L"], colors:["طوبي", "أبيض"]},
+      {name:"فستان قصير قطن", price:165, was:null, type:"فساتين", sizes:["S", "M", "L"], colors:["أزرق", "أبيض"]},
+      {name:"عباية دوام زيتي", price:295, was:340, type:"عبايات", sizes:["M", "L", "XL"], colors:["زيتي", "أسود"]},
+      {name:"تنورة بليسيه", price:175, was:null, type:"أساسيات", sizes:["S", "M"], colors:["بيج", "رمادي"]},
+      {name:"عباية كتان كحلي", price:380, was:null, type:"عبايات", sizes:["M", "L"], colors:["كحلي"]}
+    ];
+    const TYPES = ['عبايات', 'فساتين', 'أساسيات'];
+    const SIZES = ['S', 'M', 'L', 'XL'];
+    const COLORS = [
+      { label: 'أسود', hex: '#16161A' }, { label: 'أبيض', hex: '#FFFFFF' }, { label: 'بيج', hex: '#C8B9A6' },
+      { label: 'زيتي', hex: '#6B7A6E' }, { label: 'أزرق', hex: '#2F3A44' }, { label: 'كحلي', hex: '#2F3A44' },
+      { label: 'طوبي', hex: '#A7563F' }, { label: 'رمادي', hex: '#5A5F63' },
+    ];
+    const PRICES = [
+      { label: 'أقل من ٢٠٠ ر.س', min: 0, max: 199 },
+      { label: '٢٠٠ – ٣٥٠ ر.س', min: 200, max: 350 },
+      { label: '٣٥٠ – ٥٠٠ ر.س', min: 350, max: 500 },
+      { label: 'أكثر من ٥٠٠ ر.س', min: 500, max: 99999 },
+    ];
+    const SORTS = ['الأحدث', 'السعر: الأقل أولاً', 'السعر: الأعلى أولاً'];
+    const ar = n => String(n).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+
+    const toggleIn = (key, v) => {
+      const cur = S[key];
+      this.setState({ [key]: cur.includes(v) ? cur.filter(x => x !== v) : cur.concat([v]) });
+    };
+    const visible = p =>
+      (!S.types.length || S.types.includes(p.type)) &&
+      (!S.sizes.length || p.sizes.some(s => S.sizes.includes(s))) &&
+      (!S.colors.length || p.colors.some(c => S.colors.includes(c))) &&
+      (S.price === null || (p.price >= PRICES[S.price].min && p.price <= PRICES[S.price].max)) &&
+      (!S.sale || p.was !== null);
+
+    const vis = PRODUCTS.map(visible);
+    const shownIdx = PRODUCTS.map((p, i) => i).filter(i => vis[i]);
+    let ordered = shownIdx.slice();
+    if (S.sort === 1) ordered.sort((a, b) => PRODUCTS[a].price - PRODUCTS[b].price);
+    if (S.sort === 2) ordered.sort((a, b) => PRODUCTS[b].price - PRODUCTS[a].price);
+    const orderOf = {};
+    ordered.forEach((idx, rank) => { orderOf[idx] = rank; });
+
+    const chips = [];
+    S.types.forEach(t => chips.push({ label: t, remove: () => toggleIn('types', t) }));
+    S.sizes.forEach(t => chips.push({ label: 'مقاس ' + t, remove: () => toggleIn('sizes', t) }));
+    S.colors.forEach(t => chips.push({ label: t, remove: () => toggleIn('colors', t) }));
+    if (S.price !== null) chips.push({ label: PRICES[S.price].label, remove: () => this.setState({ price: null }) });
+    if (S.sale) chips.push({ label: 'عليها تخفيض', remove: () => this.setState({ sale: false }) });
+
+    const out = {
+      accent,
+      resultCount: ar(shownIdx.length),
+      noResults: shownIdx.length === 0,
+      sortLabel: SORTS[S.sort],
+      cycleSort: () => this.setState({ sort: (S.sort + 1) % SORTS.length }),
+      clearAll: () => this.setState({ types: [], sizes: [], colors: [], price: null, sale: false }),
+      clearColor: chips.length ? '#16161A' : '#C9C5BF',
+      chips,
+      hasChips: chips.length > 0,
+      typeOpts: TYPES.map(t => {
+        const on = S.types.includes(t);
+        return { label: t, count: ar(PRODUCTS.filter(p => p.type === t).length), toggle: () => toggleIn('types', t),
+                 border: on ? accent : '#D6D2CC', fill: on ? accent : 'transparent', tick: on ? '1' : '0', fg: on ? '#16161A' : '#55555C' };
+      }),
+      sizeOpts: SIZES.map(s => {
+        const on = S.sizes.includes(s);
+        return { label: s, toggle: () => toggleIn('sizes', s), border: on ? accent : '#E6E4E0', bg: on ? accent : '#fff', fg: on ? '#fff' : '#55555C' };
+      }),
+      colorOpts: COLORS.map(c => {
+        const on = S.colors.includes(c.label);
+        return { label: c.label, hex: c.hex, toggle: () => toggleIn('colors', c.label), ring: on ? accent : 'transparent', fg: on ? '#16161A' : '#8A8A93' };
+      }),
+      priceOpts: PRICES.map((p, i) => {
+        const on = S.price === i;
+        return { label: p.label, toggle: () => this.setState({ price: on ? null : i }), border: on ? accent : '#D6D2CC', dot: on ? accent : 'transparent', fg: on ? '#16161A' : '#55555C' };
+      }),
+      saleToggle: () => this.setState({ sale: !S.sale }),
+      saleBorder: S.sale ? accent : '#D6D2CC',
+      saleFill: S.sale ? accent : 'transparent',
+      saleTick: S.sale ? '1' : '0',
+      saleFg: S.sale ? '#16161A' : '#55555C',
+    };
+    PRODUCTS.forEach((p, i) => {
+      out['v' + i] = vis[i];
+      out['o' + i] = orderOf[i] === undefined ? 99 : orderOf[i];
+      out['w' + i] = {
+        toggle: () => this.setState({ wished: { ...S.wished, [i]: !S.wished[i] } }),
+        fill: S.wished[i] ? '#C0261E' : 'none',
+        stroke: S.wished[i] ? '#C0261E' : '#16161A',
+      };
+    });
+    return out;
+  }
+}
+</script>
+</body>
+</html>

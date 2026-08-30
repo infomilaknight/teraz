@@ -1,0 +1,492 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; font-family: "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif; color: #16161A; }
+    a { color: #16161A; text-decoration: none; }
+    a:hover { color: #55555C; }
+    .tz-h { font-family: "Readex Pro", "IBM Plex Sans Arabic", system-ui, sans-serif; font-weight: 500; letter-spacing: -.01em; }
+    .tz-wrap { width: 1280px; margin: 0 auto; }
+    .tz-eyebrow { font-size: 11px; letter-spacing: .16em; font-weight: 600; color: #8A8A93; }
+    .tz-card { background: #fff; border: 1px solid #E6E4E0; border-radius: 10px; overflow: hidden; }
+    .tz-nav { font-size: 14px; font-weight: 500; padding: 18px 0; cursor: pointer; border-bottom: 2px solid transparent; }
+    .tz-nav:hover { border-bottom-color: #16161A; }
+    .tz-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tz-frame { position: relative; aspect-ratio: 4/5; background: #EFEDEA; overflow: hidden; }
+    .tz-wish { position: absolute; top: 10px; left: 10px; width: 32px; height: 32px; border-radius: 999px; background: rgba(255,255,255,.94); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .tz-quick { position: absolute; left: 12px; right: 12px; bottom: 12px; background: rgba(255,255,255,.96); border-radius: 8px; padding: 11px; text-align: center; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .tz-badge { position: absolute; top: 12px; right: 12px; color: #fff; padding: 4px 9px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+    .tz-meta { padding: 15px 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+    .tz-name { font-size: 14px; font-weight: 600; line-height: 1.5; }
+    .tz-price { font-size: 15px; font-weight: 700; }
+    .tz-old { font-size: 13px; color: #8A8A93; text-decoration: line-through; }
+    .tz-sw { width: 15px; height: 15px; border-radius: 999px; border: 1px solid rgba(0,0,0,.12); }
+  </style>
+</helmet>
+<div dir="rtl" lang="ar" style="width: 1440px; background: #FFFFFF;">
+
+  <div style="background: #16161A; color: #fff; font-size: 12.5px;">
+    <div class="tz-wrap" style="display: flex; align-items: center; justify-content: space-between; height: 38px;">
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <span>شحن مجاني للطلبات فوق ٢٠٠ ر.س</span>
+        <span style="opacity: .3;">|</span>
+        <span>إرجاع مجاني خلال ١٤ يوم</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 18px; opacity: .85;">
+        <span>تتبّع طلبك</span>
+        <span>English</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-bottom: 1px solid #E6E4E0; background: #fff;">
+    <div class="tz-wrap" style="display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 32px;">
+      <div class="tz-h" style="font-size: 26px;">طِراز</div>
+      <div style="flex: 1; max-width: 460px;">
+        <div style="height: 42px; border: 1px solid #E6E4E0; border-radius: 8px; display: flex; align-items: center; padding: 0 14px; gap: 10px; background: #FAF9F7;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8A8A93" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <span style="font-size: 13.5px; color: #8A8A93;">ابحث عن عباية، فستان، حذاء…</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 22px;">
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13.5px;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#16161A" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.2-3.6 4-5.4 7.5-5.4S18.3 16.4 19.5 20"/></svg>
+          <span>حسابي</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13.5px;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#16161A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg>
+          <span>{{ wishCount }}</span>
+        </div>
+        <div onClick="{{ addCart }}" style="display: flex; align-items: center; gap: 9px; background: {{accent}}; color: #fff; height: 42px; padding: 0 18px; border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16l-1.4 10.4a2 2 0 01-2 1.7H7.4a2 2 0 01-2-1.7z"/><path d="M9 6a3 3 0 016 0"/></svg>
+          <span>السلة ({{ cartCount }})</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-bottom: 1px solid #E6E4E0; background: #fff; position: relative;">
+    <div class="tz-wrap" style="display: flex; align-items: center; gap: 30px;">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <div class="tz-nav" onMouseEnter="{{ n.open }}" onMouseLeave="{{ closeMenu }}" style="border-bottom-color: {{ n.line }};">{{ n.label }}</div>
+      </sc-for>
+      <div class="tz-nav" style="margin-right: auto; color: #C0261E;">التخفيضات</div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ true }}">
+      <div style="position: absolute; top: 100%; right: 0; left: 0; background: #fff; border-top: 1px solid #E6E4E0; border-bottom: 1px solid #E6E4E0; box-shadow: 0 14px 40px rgba(22,22,26,.10); z-index: 20;">
+        <div class="tz-wrap" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; padding: 28px 0 32px;">
+          <sc-for list="{{ menuCols }}" as="c" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div class="tz-eyebrow">{{ c.title }}</div>
+              <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="4">
+                <a href="#" style="font-size: 13.5px; color: #55555C;">{{ i }}</a>
+              </sc-for>
+            </div>
+          </sc-for>
+          <div style="border-radius: 10px; overflow: hidden; aspect-ratio: 4/3;"><img src="look-work.jpg" class="tz-img" alt=""></div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="position: relative; height: 620px; overflow: hidden; background: #E8E2D9;">
+    <sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+      <img src="hero-motion.webp" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" alt="">
+      <div style="position: absolute; top: 22px; left: 24px; display: flex; align-items: center; gap: 8px; background: rgba(15,15,18,.55); color: #fff; border-radius: 999px; padding: 7px 14px; font-size: 11.5px; font-weight: 600;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5v13l11-6.5z"/></svg>
+        <span>فيديو</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+      <img src="hero-abaya.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" alt="">
+    </sc-if>
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <img src="hero-accessories.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" alt="">
+    </sc-if>
+    <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(15,15,18,.66) 6%, rgba(15,15,18,.18) 58%, transparent);"></div>
+    <div class="tz-wrap" style="position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 20px;">
+      <div class="tz-eyebrow" style="color: rgba(255,255,255,.72);">{{ slide.eyebrow }}</div>
+      <div class="tz-h" style="font-size: 58px; color: #fff; line-height: 1.15; max-width: 560px; white-space: pre-line;">{{ slide.title }}</div>
+      <div style="font-size: 16px; color: rgba(255,255,255,.86); line-height: 1.75; max-width: 460px;">{{ slide.sub }}</div>
+      <div style="display: flex; gap: 12px; margin-top: 10px;">
+        <div style="background: #fff; color: #16161A; padding: 15px 32px; border-radius: 8px; font-size: 14.5px; font-weight: 600; cursor: pointer;">{{ slide.cta }}</div>
+        <div style="border: 1px solid rgba(255,255,255,.6); color: #fff; padding: 14px 28px; border-radius: 8px; font-size: 14.5px; font-weight: 500; cursor: pointer;">شاهد اللوك بوك</div>
+      </div>
+    </div>
+    <div style="position: absolute; bottom: 28px; right: 0; left: 0;">
+      <div class="tz-wrap" style="display: flex; gap: 8px;">
+        <sc-for list="{{ slides }}" as="s" hint-placeholder-count="3">
+          <div onClick="{{ s.go }}" style="width: {{ s.w }}; height: 3px; background: {{ s.color }}; border-radius: 2px; cursor: pointer; transition: all .3s;"></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-wrap" style="padding: 44px 0 8px;">
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;">
+        <div style="width: 100%; aspect-ratio: 1; border-radius: 999px; overflow: hidden;"><img src="cat-abayas.jpg" class="tz-img" alt=""></div>
+        <div style="font-size: 13.5px; font-weight: 600;">عبايات</div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;">
+        <div style="width: 100%; aspect-ratio: 1; border-radius: 999px; overflow: hidden;"><img src="cat-dresses.jpg" class="tz-img" alt=""></div>
+        <div style="font-size: 13.5px; font-weight: 600;">فساتين</div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;">
+        <div style="width: 100%; aspect-ratio: 1; border-radius: 999px; overflow: hidden;"><img src="cat-basics.jpg" class="tz-img" alt=""></div>
+        <div style="font-size: 13.5px; font-weight: 600;">أساسيات</div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;">
+        <div style="width: 100%; aspect-ratio: 1; border-radius: 999px; overflow: hidden;"><img src="cat-accessories.jpg" class="tz-img" alt=""></div>
+        <div style="font-size: 13.5px; font-weight: 600;">إكسسوارات</div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;">
+        <div style="width: 100%; aspect-ratio: 1; border-radius: 999px; overflow: hidden;"><img src="cat-shoes.jpg" class="tz-img" alt=""></div>
+        <div style="font-size: 13.5px; font-weight: 600;">أحذية</div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;">
+        <div style="width: 100%; aspect-ratio: 1; border-radius: 999px; overflow: hidden;"><img src="p-blouse-satin.jpg" class="tz-img" alt=""></div>
+        <div style="font-size: 13.5px; font-weight: 600;">التخفيضات</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-wrap" style="padding: 40px 0;">
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid #E6E4E0; border-radius: 10px; overflow: hidden;">
+      <div style="display: flex; align-items: center; gap: 14px; padding: 22px 24px; border-left: 1px solid #E6E4E0;">
+        <div style="color: {{accent}}; flex-shrink: 0; display: flex;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10v9H2z"/><path d="M12 10h4l4 3.5V16h-8z"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg></div>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-size: 13.5px; font-weight: 600;">شحن خلال ٤٨ ساعة</div>
+          <div style="font-size: 12px; color: #8A8A93;">لكل مدن المملكة</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 22px 24px; border-left: 1px solid #E6E4E0;">
+        <div style="color: {{accent}}; flex-shrink: 0; display: flex;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 019-9 9 9 0 018.4 5.8"/><path d="M21 12a9 9 0 01-9 9 9 9 0 01-8.4-5.8"/><path d="M20.5 3.5v5h-5"/><path d="M3.5 20.5v-5h5"/></svg></div>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-size: 13.5px; font-weight: 600;">إرجاع مجاني ١٤ يوم</div>
+          <div style="font-size: 12px; color: #8A8A93;">بدون أسئلة</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 22px 24px; border-left: 1px solid #E6E4E0;">
+        <div style="color: {{accent}}; flex-shrink: 0; display: flex;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/><path d="M6 14.5h4"/></svg></div>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-size: 13.5px; font-weight: 600;">تابي وتمارا</div>
+          <div style="font-size: 12px; color: #8A8A93;">قسّطها على ٤ دفعات</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 22px 24px;">
+        <div style="color: {{accent}}; flex-shrink: 0; display: flex;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0116 0v5a2.5 2.5 0 01-2.5 2.5H15"/><rect x="2.5" y="11.5" width="4" height="6" rx="1.6"/><rect x="17.5" y="11.5" width="4" height="6" rx="1.6"/></svg></div>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-size: 13.5px; font-weight: 600;">دعم واتساب</div>
+          <div style="font-size: 12px; color: #8A8A93;">من ٩ص إلى ١١م</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-wrap" style="padding: 28px 0 56px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 22px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="tz-eyebrow">المجموعة</div>
+        <div class="tz-h" style="font-size: 30px;">وصل حديثاً</div>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <div onClick="{{ t.pick }}" style="padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid {{ t.border }}; background: {{ t.bg }}; color: {{ t.fg }};">{{ t.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+
+      <sc-if value="{{ f0 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column;">
+          <div class="tz-frame">
+            <img src="p-abaya-linen.jpg" class="tz-img" alt="">
+            <div class="tz-badge" style="background: #C0261E;">خصم ٣٠٪</div>
+            <div class="tz-wish" onClick="{{ w0.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w0.fill }}" stroke="{{ w0.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+            <div class="tz-quick" onClick="{{ addCart }}">إضافة سريعة</div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">عباية كلوش كتان</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price" style="color: #C0261E;">٢٤٥ ر.س</div><div class="tz-old">٣٥٠ ر.س</div></div>
+            <div style="display: flex; gap: 6px; margin-top: 2px;"><div class="tz-sw" style="background: #16161A;"></div><div class="tz-sw" style="background: #C8B9A6;"></div><div class="tz-sw" style="background: #6B7A6E;"></div></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ f1 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column;">
+          <div class="tz-frame">
+            <img src="p-shirt-white.jpg" class="tz-img" alt="">
+            <div class="tz-badge" style="background: #16161A;">جديد</div>
+            <div class="tz-wish" onClick="{{ w1.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w1.fill }}" stroke="{{ w1.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+            <div class="tz-quick" onClick="{{ addCart }}">إضافة سريعة</div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">قميص أوفر سايز</div>
+            <div class="tz-price">١٨٩ ر.س</div>
+            <div style="display: flex; gap: 6px; margin-top: 2px;"><div class="tz-sw" style="background: #FFFFFF;"></div><div class="tz-sw" style="background: #C8B9A6;"></div></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ f2 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column;">
+          <div class="tz-frame">
+            <img src="p-dress-ribbed.jpg" class="tz-img" alt="">
+            <div class="tz-wish" onClick="{{ w2.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w2.fill }}" stroke="{{ w2.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+            <div class="tz-quick" onClick="{{ addCart }}">إضافة سريعة</div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">فستان ميدي مضلّع</div>
+            <div class="tz-price">٣١٠ ر.س</div>
+            <div style="display: flex; gap: 6px; margin-top: 2px;"><div class="tz-sw" style="background: #2F3A44;"></div><div class="tz-sw" style="background: #A7563F;"></div><div class="tz-sw" style="background: #16161A;"></div></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ f3 }}" hint-placeholder-val="{{ true }}">
+        <div class="tz-card" style="display: flex; flex-direction: column;">
+          <div class="tz-frame">
+            <img src="p-trousers-wide.jpg" class="tz-img" alt="">
+            <div class="tz-badge" style="background: #8A5A0B;">آخر ٣ قطع</div>
+            <div class="tz-wish" onClick="{{ w3.toggle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{ w3.fill }}" stroke="{{ w3.stroke }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12.9l-7.5 7.2a1.3 1.3 0 01-1.8 0l-7.5-7.2a4.6 4.6 0 016.5-6.5l.9.9.9-.9a4.6 4.6 0 016.5 6.5z"/></svg></div>
+            <div class="tz-quick" onClick="{{ addCart }}">إضافة سريعة</div>
+          </div>
+          <div class="tz-meta">
+            <div class="tz-name">بنطلون واسع</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><div class="tz-price" style="color: #C0261E;">٢١٠ ر.س</div><div class="tz-old">٢٦٠ ر.س</div></div>
+            <div style="display: flex; gap: 6px; margin-top: 2px;"><div class="tz-sw" style="background: #16161A;"></div><div class="tz-sw" style="background: #5A5F63;"></div></div>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+
+  <div class="tz-wrap" style="padding-bottom: 56px;">
+    <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px;">
+      <div style="position: relative; border-radius: 10px; overflow: hidden; height: 400px;">
+        <img src="banner-linen.jpg" class="tz-img" alt="">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,15,18,.6), rgba(15,15,18,.05) 60%);"></div>
+        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; padding: 40px;">
+          <div class="tz-eyebrow" style="color: rgba(255,255,255,.72);">تشكيلة محدودة</div>
+          <div class="tz-h" style="font-size: 34px; color: #fff; max-width: 340px; line-height: 1.25;">الكتان الطبيعي</div>
+          <div style="font-size: 14.5px; color: rgba(255,255,255,.86); max-width: 380px; line-height: 1.7;">قطع صيفية بخامة تتنفّس، مصنوعة بكميات محدودة.</div>
+          <div style="background: #fff; color: #16161A; padding: 13px 26px; border-radius: 8px; font-size: 14px; font-weight: 600; align-self: flex-start; cursor: pointer;">تسوّق التشكيلة</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 20px;">
+        <div style="position: relative; border-radius: 10px; overflow: hidden;">
+          <img src="banner-basics.jpg" class="tz-img" alt="">
+          <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(255,255,255,.92) 30%, rgba(255,255,255,.1));"></div>
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 32px;">
+            <div class="tz-h" style="font-size: 22px;">أساسيات الخزانة</div>
+            <div style="font-size: 13.5px; color: #55555C;">من ٩٩ ر.س</div>
+          </div>
+        </div>
+        <div style="position: relative; border-radius: 10px; overflow: hidden;">
+          <img src="cat-accessories.jpg" class="tz-img" alt="">
+          <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(255,255,255,.92) 30%, rgba(255,255,255,.1));"></div>
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 32px;">
+            <div class="tz-h" style="font-size: 22px;">إكسسوارات</div>
+            <div style="font-size: 13.5px; color: #55555C;">خصم يصل إلى ٤٠٪</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #FAF9F7; border-top: 1px solid #E6E4E0; border-bottom: 1px solid #E6E4E0;">
+    <div class="tz-wrap" style="padding: 56px 0;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 22px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="tz-eyebrow">الأكثر طلباً هذا الأسبوع</div>
+          <div class="tz-h" style="font-size: 30px;">اختيارات العملاء</div>
+        </div>
+        <div style="font-size: 13.5px; font-weight: 600; border-bottom: 1px solid #16161A; padding-bottom: 3px; cursor: pointer;">عرض الكل</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+        <div class="tz-card" style="display: flex; flex-direction: column;">
+          <div class="tz-frame"><img src="p-abaya-black.jpg" class="tz-img" alt=""><div class="tz-badge" style="background: #16161A;">١</div></div>
+          <div class="tz-meta" style="gap: 7px;">
+            <div class="tz-name">عباية سادة بحزام</div>
+            <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8A8A93;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#D9A441"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/></svg><span>4.9 · ٣١٢ تقييم</span></div>
+            <div class="tz-price">٢٧٥ ر.س</div>
+          </div>
+        </div>
+        <div class="tz-card" style="display: flex; flex-direction: column;">
+          <div class="tz-frame"><img src="p-blouse-satin.jpg" class="tz-img" alt=""><div class="tz-badge" style="background: #16161A;">٢</div></div>
+          <div class="tz-meta" style="gap: 7px;">
+            <div class="tz-name">بلوزة ساتان</div>
+            <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8A8A93;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#D9A441"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/></svg><span>4.8 · ١٩٨ تقييم</span></div>
+            <div class="tz-price">١٤٥ ر.س</div>
+          </div>
+        </div>
+        <div class="tz-card" style="display: flex; flex-direction: column;">
+          <div class="tz-frame"><img src="p-bag-leather.jpg" class="tz-img" alt=""><div class="tz-badge" style="background: #16161A;">٣</div></div>
+          <div class="tz-meta" style="gap: 7px;">
+            <div class="tz-name">حقيبة جلد صغيرة</div>
+            <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8A8A93;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#D9A441"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/></svg><span>4.7 · ١٥٤ تقييم</span></div>
+            <div class="tz-price">٣٩٥ ر.س</div>
+          </div>
+        </div>
+        <div class="tz-card" style="display: flex; flex-direction: column;">
+          <div class="tz-frame"><img src="cat-shoes.jpg" class="tz-img" alt=""><div class="tz-badge" style="background: #16161A;">٤</div></div>
+          <div class="tz-meta" style="gap: 7px;">
+            <div class="tz-name">حذاء مسطّح</div>
+            <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8A8A93;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#D9A441"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/></svg><span>4.6 · ٩٧ تقييم</span></div>
+            <div class="tz-price">٢٢٠ ر.س</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-wrap" style="padding: 56px 0;">
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px;">
+      <div class="tz-eyebrow">اللوك بوك</div>
+      <div class="tz-h" style="font-size: 30px;">تنسيقات جاهزة</div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
+      <div style="position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 1; cursor: pointer;">
+        <img src="look-work.jpg" class="tz-img" alt="">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,15,18,.6), transparent 55%);"></div>
+        <div style="position: absolute; right: 24px; bottom: 22px; color: #fff;"><div class="tz-h" style="font-size: 20px;">إطلالة الدوام</div><div style="font-size: 13px; opacity: .82; margin-top: 4px;">٦ قطع</div></div>
+      </div>
+      <div style="position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 1; cursor: pointer;">
+        <img src="look-evening.jpg" class="tz-img" alt="">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,15,18,.6), transparent 55%);"></div>
+        <div style="position: absolute; right: 24px; bottom: 22px; color: #fff;"><div class="tz-h" style="font-size: 20px;">سهرة هادئة</div><div style="font-size: 13px; opacity: .82; margin-top: 4px;">٤ قطع</div></div>
+      </div>
+      <div style="position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 1; cursor: pointer;">
+        <img src="look-weekend.jpg" class="tz-img" alt="">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,15,18,.6), transparent 55%);"></div>
+        <div style="position: absolute; right: 24px; bottom: 22px; color: #fff;"><div class="tz-h" style="font-size: 20px;">نهاية الأسبوع</div><div style="font-size: 13px; opacity: .82; margin-top: 4px;">٥ قطع</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #16161A; color: #fff;">
+    <div class="tz-wrap" style="padding: 56px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px;">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; gap: 3px;">
+            <sc-for list="{{ r.stars }}" as="s" hint-placeholder-count="5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#D9A441"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/></svg>
+            </sc-for>
+          </div>
+          <div style="font-size: 15px; line-height: 1.85; color: rgba(255,255,255,.88);">{{ r.text }}</div>
+          <div style="font-size: 12.5px; color: rgba(255,255,255,.5);">{{ r.author }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background: #FAF9F7; border-top: 1px solid #E6E4E0;">
+    <div class="tz-wrap" style="padding: 56px 0 40px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="tz-h" style="font-size: 22px;">طِراز</div>
+        <div style="font-size: 13.5px; color: #55555C; line-height: 1.85; max-width: 280px;">متجر أزياء سعودي. تصميم بسيط، خامات مختارة، وشحن سريع لكل مدن المملكة.</div>
+      </div>
+      <sc-for list="{{ footerCols }}" as="c" hint-placeholder-count="2">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="tz-eyebrow">{{ c.title }}</div>
+          <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="4">
+            <a href="#" style="font-size: 13.5px; color: #55555C;">{{ i }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="tz-eyebrow">النشرة البريدية</div>
+        <div style="font-size: 13.5px; color: #55555C; line-height: 1.8;">اشترك وخذ خصم ١٠٪ على أول طلب.</div>
+        <div style="display: flex; gap: 8px; margin-top: 4px;">
+          <div style="flex: 1; height: 42px; border: 1px solid #E6E4E0; border-radius: 8px; background: #fff; display: flex; align-items: center; padding: 0 14px; font-size: 13px; color: #8A8A93;">بريدك الإلكتروني</div>
+          <div style="background: {{accent}}; color: #fff; height: 42px; padding: 0 20px; border-radius: 8px; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; cursor: pointer;">اشترك</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #E6E4E0;">
+      <div class="tz-wrap" style="height: 62px; display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; color: #8A8A93;">
+        <span>© ٢٠٢٦ طِراز — جميع الحقوق محفوظة</span>
+        <div style="display: flex; gap: 10px; align-items: center;"><span>مدى</span><span>·</span><span>Apple Pay</span><span>·</span><span>تابي</span><span>·</span><span>تمارا</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#16161A","options":["#16161A","#7A2E2A","#1F4E43","#3B3A6B"],"section":"الهوية"},"$preview":{"width":1440,"height":4980}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { slide: 0, menu: null, tab: 0, wished: {}, cart: 2, wish: 3 };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#16161A';
+    const S = this.state;
+    const SLIDES = [
+      { eyebrow: 'مجموعة صيف ٢٠٢٦', title: 'خفيف، فضفاض،\nمصنوع للحرّ', sub: 'قطع كتان وقطن بقصّات واسعة تناسب الطقس والذوق المحلي.', cta: 'تسوّقي الآن' },
+      { eyebrow: 'عبايات', title: 'الأسود بتفاصيل\nمختلفة', sub: 'قصّات كلوش وبنسات مدروسة، بخامات لا تشفّ.', cta: 'شاهدي العبايات' },
+      { eyebrow: 'إكسسوارات', title: 'اللمسة التي\nتُكمل الإطلالة', sub: 'حقائب وأحزمة جلد طبيعي بألوان محايدة.', cta: 'اكتشفي' },
+    ];
+    const NAV = ['جديدنا', 'عبايات', 'فساتين', 'أساسيات', 'إكسسوارات', 'أحذية'];
+    const TABS = ['الكل', 'عبايات', 'فساتين'];
+    const wish = i => ({
+      toggle: () => this.setState({ wished: { ...S.wished, [i]: !S.wished[i] }, wish: S.wish + (S.wished[i] ? -1 : 1) }),
+      fill: S.wished[i] ? '#C0261E' : 'none',
+      stroke: S.wished[i] ? '#C0261E' : '#16161A',
+    });
+    return {
+      accent,
+      cartCount: S.cart,
+      wishCount: S.wish,
+      addCart: () => this.setState({ cart: S.cart + 1 }),
+      slide: SLIDES[S.slide],
+      s0: S.slide === 0, s1: S.slide === 1, s2: S.slide === 2,
+      slides: SLIDES.map((_, i) => ({
+        go: () => this.setState({ slide: i }),
+        w: i === S.slide ? '46px' : '18px',
+        color: i === S.slide ? '#FFFFFF' : 'rgba(255,255,255,.42)',
+      })),
+      nav: NAV.map((label, i) => ({ label, line: S.menu === i ? '#16161A' : 'transparent', open: () => this.setState({ menu: i }) })),
+      closeMenu: () => this.setState({ menu: null }),
+      menuOpen: S.menu !== null,
+      menuCols: [
+        { title: 'حسب النوع', items: ['عبايات يومية', 'عبايات سهرة', 'فساتين ميدي', 'فساتين ماكسي'] },
+        { title: 'حسب الخامة', items: ['كتان', 'قطن', 'ساتان', 'كريب'] },
+        { title: 'حسب المناسبة', items: ['دوام', 'مناسبات', 'سفر', 'يومي'] },
+      ],
+      tabs: TABS.map((label, i) => ({
+        label, pick: () => this.setState({ tab: i }),
+        bg: i === S.tab ? accent : 'transparent',
+        fg: i === S.tab ? '#FFFFFF' : '#55555C',
+        border: i === S.tab ? accent : '#E6E4E0',
+      })),
+      f0: S.tab === 0 || S.tab === 1,
+      f1: S.tab === 0,
+      f2: S.tab === 0 || S.tab === 2,
+      f3: S.tab === 0,
+      w0: wish(0), w1: wish(1), w2: wish(2), w3: wish(3),
+      reviews: [
+        { stars: [1,2,3,4,5], text: 'الخامة أفضل من الصور بصراحة. طلبت مقاسي المعتاد وجاء مضبوط، والتوصيل وصل الرياض في يومين.', author: 'نورة — الرياض' },
+        { stars: [1,2,3,4,5], text: 'أول مرة أطلب عباية أونلاين وما ندمت. دليل المقاسات دقيق والإرجاع كان سهل لما بدّلت اللون.', author: 'سارة — جدة' },
+        { stars: [1,2,3,4,5], text: 'التنسيقات الجاهزة وفّرت عليّ وقت. اشتريت اللوك كامل وطلع متناسق زي ما بالصورة.', author: 'ريم — الدمام' },
+      ],
+      footerCols: [
+        { title: 'التسوّق', items: ['جديدنا', 'الأكثر مبيعاً', 'التخفيضات', 'بطاقات الهدايا'] },
+        { title: 'المساعدة', items: ['الشحن والتوصيل', 'الاستبدال والإرجاع', 'دليل المقاسات', 'تواصل معنا'] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
