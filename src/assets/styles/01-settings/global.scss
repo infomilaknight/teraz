@@ -42,7 +42,7 @@ $main-text-color: var(--main-text-color);
   --tz-star: #d9a441;
 
   /* ---- type ---- */
-  --font-main: "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-main: "IBM Plex Sans Arabic", "SF Arabic", "Geeza Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Arabic", sans-serif;
   --font-display: "Readex Pro", var(--font-main);
   --font-sm: 0.8685714286rem;
 
