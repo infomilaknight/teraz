@@ -269,6 +269,314 @@
             "required": false,
             "value": false,
             "selected": false
+        },
+        {
+            "type": "static",
+            "id": "tz-line-features",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "tz-head-features",
+            "variant": "h6",
+            "value": "<div class='rounded-lg' style=\"background-color: #16161A; display: flex; justify-content: center; align-items: center; padding: 15px; margin-bottom: 20px !important;\"><h6 style='color: #ffffff; font-size: 15px; font-weight: bold;'>شريط المميزات — أعلى الصفحة الرئيسية</h6></div>"
+        },
+        {
+            "type": "boolean",
+            "id": "tz_features_enabled",
+            "label": "إظهار شريط المميزات",
+            "description": "أربع رسائل ثقة تظهر لكل زائر: الشحن، الإرجاع، التقسيط، الدعم.",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "id": "tz_feature_1_title",
+            "label": "الميزة ١ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "شحن سريع",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_feature_1_sub",
+            "label": "الميزة ١ — التفصيل",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "لكل مدن المملكة",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_feature_2_title",
+            "label": "الميزة ٢ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "إرجاع مجاني",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_feature_2_sub",
+            "label": "الميزة ٢ — التفصيل",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "خلال ١٤ يوم",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_feature_3_title",
+            "label": "الميزة ٣ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "ادفع على دفعات",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_feature_3_sub",
+            "label": "الميزة ٣ — التفصيل",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "تابي وتمارا",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_feature_4_title",
+            "label": "الميزة ٤ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "دعم يرد عليك",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_feature_4_sub",
+            "label": "الميزة ٤ — التفصيل",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "واتساب طوال اليوم",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "static",
+            "id": "tz-line-lookbook",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "tz-head-lookbook",
+            "variant": "h6",
+            "value": "<div class='rounded-lg' style=\"background-color: #16161A; display: flex; justify-content: center; align-items: center; padding: 15px; margin-bottom: 20px !important;\"><h6 style='color: #ffffff; font-size: 15px; font-weight: bold;'>اللوك بوك — تنسيقات جاهزة</h6></div>"
+        },
+        {
+            "type": "boolean",
+            "id": "tz_lookbook_enabled",
+            "label": "إظهار اللوك بوك",
+            "description": "لا يظهر القسم إطلاقاً ما لم تُرفع صورة واحدة على الأقل.",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "id": "tz_lookbook_eyebrow",
+            "label": "سطر علوي",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "اللوك بوك",
+            "minLength": 0,
+            "maxLength": 40
+        },
+        {
+            "type": "string",
+            "id": "tz_lookbook_title",
+            "label": "عنوان القسم",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "تنسيقات جاهزة",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_look_1_image",
+            "label": "التنسيق ١ — الصورة",
+            "description": "المقاس المناسب ٩٠٠×٩٠٠ بكسل (مربعة).",
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_look_1_title",
+            "label": "التنسيق ١ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "إطلالة الدوام",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_look_1_sub",
+            "label": "التنسيق ١ — التفصيل",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "٦ قطع",
+            "minLength": 0,
+            "maxLength": 30
+        },
+        {
+            "type": "string",
+            "id": "tz_look_1_url",
+            "label": "التنسيق ١ — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_look_2_image",
+            "label": "التنسيق ٢ — الصورة",
+            "description": null,
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_look_2_title",
+            "label": "التنسيق ٢ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "سهرة هادئة",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_look_2_sub",
+            "label": "التنسيق ٢ — التفصيل",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "٤ قطع",
+            "minLength": 0,
+            "maxLength": 30
+        },
+        {
+            "type": "string",
+            "id": "tz_look_2_url",
+            "label": "التنسيق ٢ — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_look_3_image",
+            "label": "التنسيق ٣ — الصورة",
+            "description": null,
+            "icon": "sicon-image",
+            "format": "image",
+            "required": false
+        },
+        {
+            "type": "string",
+            "id": "tz_look_3_title",
+            "label": "التنسيق ٣ — العنوان",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "نهاية الأسبوع",
+            "minLength": 0,
+            "maxLength": 60
+        },
+        {
+            "type": "string",
+            "id": "tz_look_3_sub",
+            "label": "التنسيق ٣ — التفصيل",
+            "description": null,
+            "icon": "sicon-format-text-alt",
+            "format": "text",
+            "required": false,
+            "multilanguage": true,
+            "placeholder": "٥ قطع",
+            "minLength": 0,
+            "maxLength": 30
+        },
+        {
+            "type": "string",
+            "id": "tz_look_3_url",
+            "label": "التنسيق ٣ — الرابط",
+            "description": null,
+            "icon": "sicon-link",
+            "format": "text",
+            "required": false
         }
     ],
     "components": [
@@ -280,7 +588,7 @@
             },
             "icon": "sicon-video",
             "path": "home.hero-video",
-            "is_default": false,
+            "is_default": true,
             "fields": [
                 {
                     "type": "string",
@@ -880,7 +1188,8 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "is_default": true
         },
         {
             "key": "b89edc4a-ce0b-468f-8323-2da48147bb32",
@@ -1108,7 +1417,8 @@
                     "searchable": true,
                     "source": "brands"
                 }
-            ]
+            ],
+            "is_default": true
         },
         {
             "key": "541cc423-90c7-4230-8a33-a0342cfde4ad",

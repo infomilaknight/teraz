@@ -486,3 +486,83 @@
 @media (prefers-reduced-motion: reduce) {
   .tz-hero__video { @apply hidden; }
 }
+
+/*
+* Teraz — structural home sections.
+*
+* Unlike the `{% component %}` blocks these are drawn by the theme itself, so they must hold
+* up on a store where the merchant has configured nothing. Everything degrades: the strip
+* keeps its four columns down to two on mobile, and the lookbook renders however many tiles
+* actually have an image.
+*/
+.tz-section-head {
+  @apply flex flex-col gap-2 mb-6;
+
+  &__eyebrow {
+    @apply text-[11px] font-semibold tracking-[.16em] text-ink-3;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    @apply text-2xl md:text-[30px] leading-tight font-medium text-ink m-0;
+  }
+}
+
+/* Trust strip */
+.tz-features-wrap { @apply py-8 md:py-10; }
+
+.tz-features {
+  @apply grid grid-cols-2 lg:grid-cols-4 border border-line rounded overflow-hidden bg-surface;
+
+  &__item {
+    @apply flex items-center gap-3.5 p-5 border-line;
+
+    /* hairlines between cells, never on the outer edge — direction-agnostic */
+    @apply border-b border-e;
+    &:nth-child(2n)      { @apply border-e-0; }
+    &:nth-last-child(-n+2) { @apply border-b-0; }
+
+    @screen lg {
+      @apply border-b-0 border-e;
+      &:last-child { @apply border-e-0; }
+      &:nth-child(2n) { @apply border-e; }
+    }
+  }
+
+  &__icon {
+    @apply flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-fill text-xl;
+    color: var(--color-primary);
+  }
+
+  &__text {
+    @apply flex flex-col gap-0.5 min-w-0;
+    b     { @apply text-[13.5px] font-semibold text-ink leading-snug; }
+    small { @apply text-xs text-ink-3 leading-snug; }
+  }
+}
+
+/* Lookbook */
+.tz-lookbook-wrap { @apply py-8 md:py-12; }
+
+.tz-lookbook {
+  @apply grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+
+  &__tile {
+    @apply relative block rounded overflow-hidden aspect-square bg-fill;
+
+    img { @apply w-full h-full object-cover transition-transform duration-500; }
+    &:hover img { @apply scale-[1.03]; }
+  }
+
+  &__scrim {
+    @apply absolute inset-0;
+    background: linear-gradient(to top, rgba(15, 15, 18, .6), transparent 55%);
+  }
+
+  &__caption {
+    @apply absolute bottom-5 rtl:right-6 ltr:left-6 flex flex-col gap-1 text-white;
+
+    b     { font-family: var(--font-display); @apply text-xl font-medium; }
+    small { @apply text-[13px] opacity-80; }
+  }
+}

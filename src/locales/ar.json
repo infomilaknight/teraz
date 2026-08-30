@@ -26,6 +26,17 @@
     },
     "categories": {
       "filter": "تصفية"
+    },
+    "teraz": {
+      "feature_shipping": "شحن سريع",
+      "feature_shipping_sub": "لكل مدن المملكة",
+      "feature_return": "إرجاع مجاني",
+      "feature_return_sub": "خلال ١٤ يوم",
+      "feature_pay": "ادفع على دفعات",
+      "feature_pay_sub": "تابي وتمارا",
+      "feature_support": "دعم يرد عليك",
+      "feature_support_sub": "واتساب طوال اليوم",
+      "lookbook": "تنسيقات جاهزة"
     }
   },
   "common": {

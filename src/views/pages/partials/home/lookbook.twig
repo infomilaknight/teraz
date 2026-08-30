@@ -1,0 +1,58 @@
+{#
+Teraz — the lookbook.
+
+In fashion a shopper buys the outfit, not the garment, so the theme keeps a place for styled
+looks instead of leaving it to whether the merchant thought to add one. A tile renders only
+once it has an image, so a half-filled lookbook degrades to one or two tiles rather than to
+empty boxes, and the whole section disappears if none are set.
+#}
+{% set tz_look_images = [
+    theme.settings.get('tz_look_1_image'),
+    theme.settings.get('tz_look_2_image'),
+    theme.settings.get('tz_look_3_image')
+] %}
+{% set tz_look_titles = [
+    theme.settings.get('tz_look_1_title'),
+    theme.settings.get('tz_look_2_title'),
+    theme.settings.get('tz_look_3_title')
+] %}
+{% set tz_look_subs = [
+    theme.settings.get('tz_look_1_sub'),
+    theme.settings.get('tz_look_2_sub'),
+    theme.settings.get('tz_look_3_sub')
+] %}
+{% set tz_look_urls = [
+    theme.settings.get('tz_look_1_url'),
+    theme.settings.get('tz_look_2_url'),
+    theme.settings.get('tz_look_3_url')
+] %}
+
+{% set tz_look_count = 0 %}
+{% for img in tz_look_images %}{% if img %}{% set tz_look_count = tz_look_count + 1 %}{% endif %}{% endfor %}
+
+{% if theme.settings.get('tz_lookbook_enabled', true) and tz_look_count > 0 %}
+    <section class="tz-lookbook-wrap">
+        <div class="container">
+            <div class="tz-section-head">
+                {% if theme.settings.get('tz_lookbook_eyebrow') %}
+                    <span class="tz-section-head__eyebrow">{{ theme.settings.get('tz_lookbook_eyebrow') }}</span>
+                {% endif %}
+                <h2 class="tz-section-head__title">{{ theme.settings.get('tz_lookbook_title', trans('pages.teraz.lookbook')) }}</h2>
+            </div>
+            <div class="tz-lookbook">
+                {% for i in 0..2 %}
+                    {% if tz_look_images[i] %}
+                        <a class="tz-lookbook__tile" {% if tz_look_urls[i] %}href="{{ tz_look_urls[i] }}"{% endif %}>
+                            <img src="{{ tz_look_images[i] }}" alt="{{ tz_look_titles[i]|default('') }}" loading="lazy" width="460" height="460">
+                            <span class="tz-lookbook__scrim"></span>
+                            <span class="tz-lookbook__caption">
+                                <b>{{ tz_look_titles[i] }}</b>
+                                {% if tz_look_subs[i] %}<small>{{ tz_look_subs[i] }}</small>{% endif %}
+                            </span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

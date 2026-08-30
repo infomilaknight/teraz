@@ -1,0 +1,44 @@
+{#
+Teraz — the trust strip.
+
+Part of the theme's own structure rather than an optional component, because a merchant who
+has configured nothing should still get a storefront that answers "will this reach me, and
+can I send it back". Every label is editable from Theme Settings, and the strip has an off
+switch (`tz_features_enabled`).
+#}
+{% if theme.settings.get('tz_features_enabled', true) %}
+    <section class="tz-features-wrap">
+        <div class="container">
+            <div class="tz-features">
+                <div class="tz-features__item">
+                    <span class="tz-features__icon"><i class="sicon-shipping-fast"></i></span>
+                    <span class="tz-features__text">
+                        <b>{{ theme.settings.get('tz_feature_1_title', trans('pages.teraz.feature_shipping')) }}</b>
+                        <small>{{ theme.settings.get('tz_feature_1_sub', trans('pages.teraz.feature_shipping_sub')) }}</small>
+                    </span>
+                </div>
+                <div class="tz-features__item">
+                    <span class="tz-features__icon"><i class="sicon-refund"></i></span>
+                    <span class="tz-features__text">
+                        <b>{{ theme.settings.get('tz_feature_2_title', trans('pages.teraz.feature_return')) }}</b>
+                        <small>{{ theme.settings.get('tz_feature_2_sub', trans('pages.teraz.feature_return_sub')) }}</small>
+                    </span>
+                </div>
+                <div class="tz-features__item">
+                    <span class="tz-features__icon"><i class="sicon-credit-card"></i></span>
+                    <span class="tz-features__text">
+                        <b>{{ theme.settings.get('tz_feature_3_title', trans('pages.teraz.feature_pay')) }}</b>
+                        <small>{{ theme.settings.get('tz_feature_3_sub', trans('pages.teraz.feature_pay_sub')) }}</small>
+                    </span>
+                </div>
+                <div class="tz-features__item">
+                    <span class="tz-features__icon"><i class="sicon-chat-conversation-alt"></i></span>
+                    <span class="tz-features__text">
+                        <b>{{ theme.settings.get('tz_feature_4_title', trans('pages.teraz.feature_support')) }}</b>
+                        <small>{{ theme.settings.get('tz_feature_4_sub', trans('pages.teraz.feature_support_sub')) }}</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

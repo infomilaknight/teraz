@@ -1,9 +1,12 @@
 /*
-* Fonts — Teraz defaults.
+* Fonts — Teraz.
 *
-* Salla injects the merchant's chosen font into `--font-main` (the `fonts` feature in
-* twilight.json), so everything below is only the DEFAULT the theme ships with. Headings
-* use `--font-display` and fall back to `--font-main`, which means a merchant who changes
-* the font in the dashboard gets it applied everywhere, headings included.
+* NO external font request. A `@import url(...)` to a third-party font host sits at the top
+* of app.css and is render-blocking: on any network where that host is slow or unreachable
+* the whole storefront waits on it and paints unstyled until the request times out. That is
+* exactly what happened in preview, so the theme ships self-hosted faces instead (added
+* below once bundled) and falls back to the system Arabic stack meanwhile.
+*
+* Salla still overwrites `--font-main` with the merchant's dashboard choice; `--font-display`
+* falls back to it, so headings follow that choice too.
 */
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');

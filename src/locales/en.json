@@ -26,6 +26,17 @@
     },
     "categories": {
       "filter": "Filter"
+    },
+    "teraz": {
+      "feature_shipping": "Fast shipping",
+      "feature_shipping_sub": "Across the Kingdom",
+      "feature_return": "Free returns",
+      "feature_return_sub": "Within 14 days",
+      "feature_pay": "Pay in instalments",
+      "feature_pay_sub": "Tabby and Tamara",
+      "feature_support": "Support that answers",
+      "feature_support_sub": "WhatsApp, all day",
+      "lookbook": "Shop the look"
     }
   },
   "common": {
